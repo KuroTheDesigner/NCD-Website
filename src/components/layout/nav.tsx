@@ -12,7 +12,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
-import { panelVariants, scrimVariants } from "@/lib/motion";
+import { panelVariants, revealVariants, scrimVariants } from "@/lib/motion";
 
 type NavItem = { href: string; label: string };
 
@@ -90,7 +90,8 @@ export function Nav() {
   }, [open, close]);
 
   return (
-    <header
+    <>
+      <header
       className={cn(
         "sticky top-0 z-30 w-full",
         "bg-[var(--color-bone)]/85 backdrop-blur-md",
@@ -182,105 +183,106 @@ export function Nav() {
         </button>
       </nav>
 
-      {/* Mobile overlay + panel */}
-      <AnimatePresence>
-        {open && (
-          <div
-            role="dialog"
-            id="primary-nav-panel"
-            aria-modal="true"
-            aria-labelledby={dialogTitleId}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            <motion.div
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={scrimVariants}
-              aria-hidden="true"
-              onClick={close}
-              className="absolute inset-0 bg-[color:color-mix(in_srgb,var(--color-ink)_55%,transparent)]"
-            />
-            <motion.div
-              ref={panelRef}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={panelVariants}
-              className={cn(
-                "absolute right-0 top-0 h-full w-[min(88vw,22rem)]",
-                "bg-[var(--color-bone)]",
-                "border-l border-[color:color-mix(in_srgb,var(--color-ink)_12%,transparent)]",
-                "flex flex-col",
-              )}
-            >
-              <div className="flex items-center justify-between px-6 py-5">
-                <span
-                  id={dialogTitleId}
-                  className="font-[var(--font-mono)] text-[0.6875rem] uppercase tracking-[0.16em] text-[var(--color-stone-600)]"
-                >
-                  Menu
-                </span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    close();
-                    triggerRef.current?.focus();
-                  }}
-                  aria-label="Close menu"
-                  className={cn(
-                    "inline-flex h-10 w-10 items-center justify-center",
-                    "text-[var(--color-ink)]",
-                    "transition-colors duration-[200ms]",
-                    "hover:text-[var(--color-laterite)]",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
-                    "rounded-[var(--radius-sm)]",
-                    "active:translate-y-[1px]",
-                  )}
-                >
-                  <X aria-hidden="true" size={20} weight="regular" />
-                </button>
-              </div>
+    </header>
 
-              <ul className="flex flex-col px-6 pb-6 pt-2">
-                {NAV_ITEMS.map((item, idx) => {
-                  const active = isActive(pathname, item.href);
-                  return (
-                    <li
-                      key={item.href}
-                      className="border-b border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] last:border-b-0"
+    <AnimatePresence>
+      {open && (
+        <div
+          role="dialog"
+          id="primary-nav-panel"
+          aria-modal="true"
+          aria-labelledby={dialogTitleId}
+          className="fixed inset-0 z-[100] md:hidden"
+        >
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={scrimVariants}
+            aria-hidden="true"
+            onClick={close}
+            className="absolute inset-0 bg-black/60 backdrop-blur-xl"
+          />
+          <motion.div
+            ref={panelRef}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={revealVariants}
+            style={{ backgroundColor: "#f2ece0" }}
+            className={cn(
+              "absolute inset-0 flex flex-col items-center justify-center",
+              "overflow-y-auto pt-20",
+            )}
+          >
+            <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-5">
+              <span
+                id={dialogTitleId}
+                className="font-[var(--font-mono)] text-[0.6875rem] uppercase tracking-[0.16em] text-stone-600"
+              >
+                Menu
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  close();
+                  triggerRef.current?.focus();
+                }}
+                aria-label="Close menu"
+                className={cn(
+                  "inline-flex h-10 w-10 items-center justify-center",
+                  "text-ink",
+                  "transition-colors duration-[200ms]",
+                  "hover:text-laterite",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-laterite rounded-[var(--radius-sm)]",
+                  "active:translate-y-[1px]",
+                )}
+              >
+                <X aria-hidden="true" size={28} weight="regular" />
+              </button>
+            </div>
+
+            <ul className="flex flex-col items-center gap-6 px-6 pb-12">
+              {NAV_ITEMS.map((item, idx) => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <li key={item.href} className="w-full text-center">
+                    <Link
+                      href={item.href}
+                      data-nav-panel-first={idx === 0 ? "" : undefined}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "group relative inline-flex flex-col items-center py-2",
+                        "font-[var(--font-display)] text-[2.75rem] leading-none",
+                        "tracking-tight text-ink transition-all duration-300",
+                        "hover:text-laterite hover:scale-105",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-laterite rounded-sm",
+                        active && "text-laterite",
+                      )}
                     >
-                      <Link
-                        href={item.href}
-                        data-nav-panel-first={idx === 0 ? "" : undefined}
-                        aria-current={active ? "page" : undefined}
-                        className={cn(
-                          "group flex items-baseline justify-between py-5",
-                          "font-[var(--font-display)] text-[1.75rem] leading-none",
-                          "tracking-[-0.02em]",
-                          "text-[var(--color-ink)]",
-                          "transition-colors duration-[220ms]",
-                          "hover:text-[var(--color-laterite)]",
-                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)] rounded-[var(--radius-sm)]",
-                          active && "text-[var(--color-laterite)]",
-                        )}
-                      >
-                        <span>{item.label}</span>
+                      <span className="relative">
+                        {item.label}
                         <span
                           aria-hidden="true"
-                          className="font-[var(--font-mono)] text-[0.6875rem] uppercase tracking-[0.16em] text-[var(--color-stone-500)]"
+                          className="absolute -left-12 top-1/2 -translate-y-1/2 font-[var(--font-mono)] text-[0.75rem] opacity-40"
                         >
                           {String(idx + 1).padStart(2, "0")}
                         </span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </header>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-auto flex gap-8 px-6 pb-16 opacity-50">
+              <a href="#" className="font-[var(--font-mono)] text-[0.65rem] uppercase tracking-[0.2em] hover:text-laterite transition-colors">Instagram</a>
+              <a href="#" className="font-[var(--font-mono)] text-[0.65rem] uppercase tracking-[0.2em] hover:text-laterite transition-colors">LinkedIn</a>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  </>
   );
 }

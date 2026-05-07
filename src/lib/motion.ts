@@ -39,6 +39,27 @@ export const panelVariants: Variants = {
   },
 };
 
+/** 
+ * Premium reveal variant using clip-path.
+ * Inspired by Manu Arora's view-transition expansion.
+ */
+export const revealVariants: Variants = {
+  closed: {
+    clipPath: "circle(0% at calc(100% - 2.5rem) 2.5rem)",
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  open: {
+    clipPath: "circle(150% at calc(100% - 2.5rem) 2.5rem)",
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 /** Soft fade for overlay scrims. */
 export const scrimVariants: Variants = {
   closed: { opacity: 0, transition: tweenFast },
