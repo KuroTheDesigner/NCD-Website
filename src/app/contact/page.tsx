@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { BriefForm } from "@/components/contact/brief-form";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function ContactPage() {
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
           <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 flex flex-col gap-7 md:col-span-8 lg:col-span-7">
+            <FadeUp className="col-span-12 flex flex-col gap-7 md:col-span-8 lg:col-span-7">
               <MetadataLine>
                 <span>Get in touch</span>
                 <span>Ibadan, Nigeria</span>
@@ -36,7 +37,7 @@ export default function ContactPage() {
                 Tell us about a site, a brief, or a condition that calls for
                 careful building. We respond within two working days.
               </p>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -46,12 +47,13 @@ export default function ContactPage() {
         <Container>
           <div className="grid grid-cols-12 gap-12 md:gap-16">
             {/* Form */}
-            <div className="col-span-12 md:col-span-7 lg:col-span-8">
+            <FadeUp className="col-span-12 md:col-span-7 lg:col-span-8">
               <BriefForm />
-            </div>
+            </FadeUp>
 
             {/* Studio info */}
-            <div
+            <FadeUp
+              delay={0.1}
               id="visit"
               className="col-span-12 flex flex-col gap-10 md:col-span-5 lg:col-span-4"
             >
@@ -108,7 +110,7 @@ export default function ContactPage() {
                   arrangement.
                 </p>
               </div>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>

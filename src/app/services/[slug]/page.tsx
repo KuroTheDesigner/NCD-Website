@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { TextLink } from "@/components/ui/text-link";
 import { LinkButton } from "@/components/home/link-button";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 import {
   services,
@@ -46,7 +47,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
           <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 flex flex-col gap-6 md:col-span-8 lg:col-span-7">
+            <FadeUp className="col-span-12 flex flex-col gap-6 md:col-span-8 lg:col-span-7">
               <MetadataLine>
                 <span>Services</span>
               </MetadataLine>
@@ -63,7 +64,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <p className="max-w-[52ch] text-[1.0625rem] md:text-[1.2rem] leading-[1.65] text-[var(--color-ink-500)]">
                 {service.hook}
               </p>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -72,12 +73,12 @@ export default async function ServiceDetailPage({ params }: Props) {
       <Section aria-labelledby="service-summary-heading">
         <Container>
           <div className="grid grid-cols-12 gap-8 md:gap-12">
-            <div className="col-span-12 md:col-span-2">
+            <FadeUp className="col-span-12 md:col-span-2">
               <MetadataLine id="service-summary-heading">
                 <span>Overview</span>
               </MetadataLine>
-            </div>
-            <div className="col-span-12 flex flex-col gap-6 md:col-span-10 lg:col-span-8">
+            </FadeUp>
+            <FadeUp delay={0.1} className="col-span-12 flex flex-col gap-6 md:col-span-10 lg:col-span-8">
               {service.summary.map((para, i) => (
                 <p
                   key={i}
@@ -86,7 +87,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   {para}
                 </p>
               ))}
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -96,7 +97,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:grid-cols-[1fr_1fr_1fr]">
             {/* Scope */}
-            <div className="flex flex-col gap-6">
+            <FadeUp delay={0} className="flex flex-col gap-6">
               <MetadataLine>
                 <span>Scope of work</span>
               </MetadataLine>
@@ -114,10 +115,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </FadeUp>
 
             {/* Deliverables */}
-            <div className="flex flex-col gap-6">
+            <FadeUp delay={0.1} className="flex flex-col gap-6">
               <MetadataLine>
                 <span>Deliverables</span>
               </MetadataLine>
@@ -135,10 +136,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </FadeUp>
 
             {/* Who it's for */}
-            <div className="flex flex-col gap-6">
+            <FadeUp delay={0.2} className="flex flex-col gap-6">
               <MetadataLine>
                 <span>Who it's for</span>
               </MetadataLine>
@@ -156,7 +157,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -166,15 +167,16 @@ export default async function ServiceDetailPage({ params }: Props) {
         <Section aria-labelledby="faq-heading">
           <Container>
             <div className="grid grid-cols-12 gap-8 md:gap-12">
-              <div className="col-span-12 md:col-span-2">
+              <FadeUp className="col-span-12 md:col-span-2">
                 <MetadataLine id="faq-heading">
                   <span>Questions</span>
                 </MetadataLine>
-              </div>
+              </FadeUp>
               <div className="col-span-12 flex flex-col gap-0 md:col-span-10 lg:col-span-8">
                 {service.faqs.map((faq, i) => (
-                  <div
+                  <FadeUp
                     key={i}
+                    delay={i * 0.1}
                     className="border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] py-8"
                   >
                     <h3
@@ -188,7 +190,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                     <p className="text-[0.9375rem] leading-[1.65] text-[var(--color-ink-500)]">
                       {faq.answer}
                     </p>
-                  </div>
+                  </FadeUp>
                 ))}
               </div>
             </div>
@@ -200,28 +202,29 @@ export default async function ServiceDetailPage({ params }: Props) {
       {relatedProjects.length > 0 && (
         <Section>
           <Container>
-            <div className="mb-10 md:mb-12">
+            <FadeUp className="mb-10 md:mb-12">
               <MetadataLine>
                 <span>Related work</span>
               </MetadataLine>
-            </div>
+            </FadeUp>
             <div className="flex flex-col gap-3">
-              {relatedProjects.map((p) =>
+              {relatedProjects.map((p, i) =>
                 p ? (
-                  <TextLink
-                    key={p.slug}
-                    href={`/work/${p.slug}`}
-                    className="group block"
-                  >
-                    <span
-                      className={cn(
-                        "font-[var(--font-display)] text-[1.5rem] md:text-[2rem]",
-                        "leading-[1.02] tracking-[-0.02em]",
-                      )}
+                  <FadeUp key={p.slug} delay={i * 0.1}>
+                    <TextLink
+                      href={`/work/${p.slug}`}
+                      className="group block"
                     >
-                      {displayTitle(p)}
-                    </span>
-                  </TextLink>
+                      <span
+                        className={cn(
+                          "font-[var(--font-display)] text-[1.5rem] md:text-[2rem]",
+                          "leading-[1.02] tracking-[-0.02em]",
+                        )}
+                      >
+                        {displayTitle(p)}
+                      </span>
+                    </TextLink>
+                  </FadeUp>
                 ) : null,
               )}
             </div>
@@ -232,37 +235,38 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* Other services */}
       <Section>
         <Container>
-          <div className="mb-8 flex items-end justify-between">
+          <FadeUp className="mb-8 flex items-end justify-between">
             <MetadataLine>
               <span>Other services</span>
             </MetadataLine>
             <TextLink href="/services">All services</TextLink>
-          </div>
+          </FadeUp>
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-8 md:grid-cols-3">
-            {otherServices.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className={cn(
-                  "group flex flex-col gap-2 p-5 rounded-[var(--radius-sm)]",
-                  "hover:bg-[color:color-mix(in_srgb,var(--color-ink)_3%,transparent)]",
-                  "transition-colors duration-[200ms]",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)]",
-                )}
-              >
-                <span
+            {otherServices.map((s, i) => (
+              <FadeUp key={s.slug} delay={i * 0.1}>
+                <Link
+                  href={`/services/${s.slug}`}
                   className={cn(
-                    "font-[var(--font-display)] text-[1.125rem] leading-[1.1] tracking-[-0.015em]",
-                    "text-[var(--color-ink)] group-hover:text-[var(--color-laterite)]",
+                    "group flex flex-col gap-2 p-5 rounded-[var(--radius-sm)]",
+                    "hover:bg-[color:color-mix(in_srgb,var(--color-ink)_3%,transparent)]",
                     "transition-colors duration-[200ms]",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)]",
                   )}
                 >
-                  {s.title}
-                </span>
-                <span className="text-[0.875rem] leading-[1.55] text-[var(--color-ink-500)]">
-                  {s.hook}
-                </span>
-              </Link>
+                  <span
+                    className={cn(
+                      "font-[var(--font-display)] text-[1.125rem] leading-[1.1] tracking-[-0.015em]",
+                      "text-[var(--color-ink)] group-hover:text-[var(--color-laterite)]",
+                      "transition-colors duration-[200ms]",
+                    )}
+                  >
+                    {s.title}
+                  </span>
+                  <span className="text-[0.875rem] leading-[1.55] text-[var(--color-ink-500)]">
+                    {s.hook}
+                  </span>
+                </Link>
+              </FadeUp>
             ))}
           </div>
         </Container>
@@ -274,7 +278,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         className="border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)]"
       >
         <Container className="py-20 md:py-28">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <FadeUp className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="flex flex-col gap-4 max-w-[52ch]">
               <h2
                 className={cn(
@@ -294,7 +298,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <LinkButton href="/contact" variant="primary" size="lg">
               Start a project
             </LinkButton>
-          </div>
+          </FadeUp>
         </Container>
       </section>
     </>

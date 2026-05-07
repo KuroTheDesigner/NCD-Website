@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function PrivacyPage() {
     <>
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
-          <div className="flex flex-col gap-6 md:max-w-[75%]">
+          <FadeUp className="flex flex-col gap-6 md:max-w-[75%]">
             <MetadataLine>
               <span>Legal</span>
               <span>Last updated: April 2025</span>
@@ -28,13 +29,13 @@ export default function PrivacyPage() {
             >
               Privacy policy
             </h1>
-          </div>
+          </FadeUp>
         </Container>
       </Section>
 
       <Section className="!pt-0 !pb-28">
         <Container>
-          <div className="prose-custom mx-auto max-w-[72ch] [&_h2]:font-[var(--font-display)] [&_h2]:text-[1.4rem] [&_h2]:leading-[1.1] [&_h2]:tracking-[-0.015em] [&_h2]:text-[var(--color-ink)] [&_h2]:mt-12 [&_h2]:mb-4 [&_p]:text-[0.9375rem] [&_p]:leading-[1.7] [&_p]:text-[var(--color-ink-500)] [&_p]:mb-5 [&_ul]:pl-5 [&_ul]:mb-5 [&_li]:text-[0.9375rem] [&_li]:leading-[1.7] [&_li]:text-[var(--color-ink-500)] [&_li]:mb-2">
+          <FadeUp delay={0.1} className="prose-custom mx-auto max-w-[72ch] [&_h2]:font-[var(--font-display)] [&_h2]:text-[1.4rem] [&_h2]:leading-[1.1] [&_h2]:tracking-[-0.015em] [&_h2]:text-[var(--color-ink)] [&_h2]:mt-12 [&_h2]:mb-4 [&_p]:text-[0.9375rem] [&_p]:leading-[1.7] [&_p]:text-[var(--color-ink-500)] [&_p]:mb-5 [&_ul]:pl-5 [&_ul]:mb-5 [&_li]:text-[0.9375rem] [&_li]:leading-[1.7] [&_li]:text-[var(--color-ink-500)] [&_li]:mb-2">
             <p>
               New Culture Designs (&ldquo;we&rdquo;, &ldquo;our&rdquo;,
               &ldquo;us&rdquo;) respects your privacy. This policy explains
@@ -103,7 +104,7 @@ export default function PrivacyPage() {
               For privacy-related questions, contact us through the contact
               page.
             </p>
-          </div>
+          </FadeUp>
         </Container>
       </Section>
     </>

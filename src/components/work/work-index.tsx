@@ -94,6 +94,34 @@ export function WorkIndex({ projects }: WorkIndexProps) {
 
   useLayoutEffect(() => {
     contextRef.current?.add(() => {
+      // Entry animation for filter section - runs only once
+      const filterLine = containerRef.current?.querySelector(".filter-line");
+      const filterButton = buttonRef.current;
+      
+      if (filterLine && filterButton) {
+        gsap.set([filterLine, filterButton], { opacity: 0, y: 20 });
+        
+        gsap.to(filterLine, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 0.2,
+        });
+        
+        gsap.to(filterButton, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 0.35,
+        });
+      }
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    contextRef.current?.add(() => {
       // Menu slide animation
       gsap.to(menuRef.current, {
         height: isOpen ? "auto" : 0,
@@ -120,7 +148,7 @@ export function WorkIndex({ projects }: WorkIndexProps) {
       if (isHovered) {
         gsap.to(button, {
           color: "var(--color-laterite)",
-          duration: 0,
+          duration: 0.2,
         });
         gsap.to(arrow, {
           y: isOpen ? -3 : 3,
@@ -130,7 +158,7 @@ export function WorkIndex({ projects }: WorkIndexProps) {
       } else {
         gsap.to(button, {
           color: "var(--color-ink)",
-          duration: 0,
+          duration: 0.2,
         });
         gsap.to(arrow, {
           y: 0,
@@ -147,7 +175,7 @@ export function WorkIndex({ projects }: WorkIndexProps) {
     <div ref={containerRef} className="flex flex-col gap-12 md:gap-16">
       {/* Filter section */}
       <div className="flex flex-col">
-        <div className="border-b border-[color:color-mix(in_srgb,var(--color-ink)_14%,transparent)] pb-4">
+        <div className="filter-line border-b border-[color:color-mix(in_srgb,var(--color-ink)_14%,transparent)] pb-4">
           <button
             ref={buttonRef}
             type="button"
@@ -233,17 +261,15 @@ export function WorkIndex({ projects }: WorkIndexProps) {
           layout
           className="grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-12 md:gap-x-8 md:gap-y-24 lg:gap-y-28"
         >
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence mode="popLayout">
             {filtered.map((project, index) => {
               const presentation = presentationFor(index, resultCount);
               return (
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
-                  transition={tweenSoft}
+                  transition={{ ...tweenSoft, duration: 0.6 }}
                   className={cn(
                     presentation.span === "narrow" && "md:col-span-5",
                     presentation.span === "standard" && "md:col-span-6",

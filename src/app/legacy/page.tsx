@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { TextLink } from "@/components/ui/text-link";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 import { opening, philosophyQuote, timeline, press, closing } from "@/content/legacy";
 
@@ -28,7 +29,7 @@ export default function LegacyPage() {
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
           <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 flex flex-col gap-6 md:col-span-8 lg:col-span-7">
+            <FadeUp className="col-span-12 flex flex-col gap-6 md:col-span-8 lg:col-span-7">
               <MetadataLine>
                 <span>The legacy</span>
                 <span>Demas Nwoko</span>
@@ -43,7 +44,7 @@ export default function LegacyPage() {
               >
                 A builder's argument.
               </h1>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -52,12 +53,12 @@ export default function LegacyPage() {
       <Section aria-labelledby="legacy-opening">
         <Container>
           <div className="grid grid-cols-12 gap-8 md:gap-12">
-            <div className="col-span-12 md:col-span-2">
+            <FadeUp className="col-span-12 md:col-span-2">
               <MetadataLine id="legacy-opening">
                 <span>1935 — present</span>
               </MetadataLine>
-            </div>
-            <div className="col-span-12 flex flex-col gap-7 md:col-span-10 lg:col-span-8">
+            </FadeUp>
+            <FadeUp delay={0.1} className="col-span-12 flex flex-col gap-7 md:col-span-10 lg:col-span-8">
               {opening.map((para, i) => (
                 <p
                   key={i}
@@ -66,7 +67,7 @@ export default function LegacyPage() {
                   {para}
                 </p>
               ))}
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -74,7 +75,7 @@ export default function LegacyPage() {
       {/* Pull quote */}
       <Section>
         <Container>
-          <div className="border-l-2 border-[var(--color-laterite)] pl-8 md:pl-12">
+          <FadeUp className="border-l-2 border-[var(--color-laterite)] pl-8 md:pl-12">
             <blockquote>
               <p
                 className={cn(
@@ -92,24 +93,25 @@ export default function LegacyPage() {
                 </MetadataLine>
               </footer>
             </blockquote>
-          </div>
+          </FadeUp>
         </Container>
       </Section>
 
       {/* Timeline */}
       <Section aria-labelledby="timeline-heading">
         <Container>
-          <div className="mb-12 md:mb-16">
+          <FadeUp className="mb-12 md:mb-16">
             <MetadataLine id="timeline-heading" as="h2">
               <span>Chronology</span>
               <span>{timeline.length} milestones</span>
             </MetadataLine>
-          </div>
+          </FadeUp>
 
           <div className="flex flex-col gap-0">
             {timeline.map((milestone, i) => (
-              <div
+              <FadeUp
                 key={`${milestone.year}-${i}`}
+                delay={i * 0.1}
                 className="grid grid-cols-12 gap-6 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] py-10 md:py-14 md:gap-10"
               >
                 {/* Year + kind */}
@@ -164,7 +166,7 @@ export default function LegacyPage() {
                     />
                   </div>
                 </div>
-              </div>
+              </FadeUp>
             ))}
           </div>
         </Container>
@@ -173,38 +175,39 @@ export default function LegacyPage() {
       {/* Press */}
       <Section aria-labelledby="press-heading">
         <Container>
-          <div className="mb-10 md:mb-14">
+          <FadeUp className="mb-10 md:mb-14">
             <MetadataLine id="press-heading" as="h2">
               <span>Press</span>
               <span>Selected coverage</span>
             </MetadataLine>
-          </div>
+          </FadeUp>
           <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
-            {press.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "group flex flex-col gap-2 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] py-8 pr-8",
-                  "hover:bg-[color:color-mix(in_srgb,var(--color-ink)_2%,transparent)]",
-                  "transition-colors duration-[200ms]",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--color-laterite)]",
-                )}
-              >
-                <span className="font-[var(--font-mono)] text-[0.6875rem] uppercase [letter-spacing:var(--tracking-label)] text-[var(--color-laterite)]">
-                  {item.publication}
-                </span>
-                <span
+            {press.map((item, i) => (
+              <FadeUp key={item.href} delay={i * 0.1}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
-                    "text-[0.9375rem] leading-[1.6] text-[var(--color-ink-500)]",
-                    "group-hover:text-[var(--color-ink)] transition-colors duration-[200ms]",
+                    "group flex flex-col gap-2 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] py-8 pr-8",
+                    "hover:bg-[color:color-mix(in_srgb,var(--color-ink)_2%,transparent)]",
+                    "transition-colors duration-[200ms]",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--color-laterite)]",
                   )}
                 >
-                  {item.excerpt}
-                </span>
-              </a>
+                  <span className="font-[var(--font-mono)] text-[0.6875rem] uppercase [letter-spacing:var(--tracking-label)] text-[var(--color-laterite)]">
+                    {item.publication}
+                  </span>
+                  <span
+                    className={cn(
+                      "text-[0.9375rem] leading-[1.6] text-[var(--color-ink-500)]",
+                      "group-hover:text-[var(--color-ink)] transition-colors duration-[200ms]",
+                    )}
+                  >
+                    {item.excerpt}
+                  </span>
+                </a>
+              </FadeUp>
             ))}
           </div>
         </Container>
@@ -214,7 +217,7 @@ export default function LegacyPage() {
       <Section>
         <Container>
           <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-7 lg:col-start-5">
+            <FadeUp className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-7 lg:col-start-5">
               <p className="text-[1.0625rem] leading-[1.7] text-[var(--color-ink-500)]">
                 {closing}
               </p>
@@ -222,7 +225,7 @@ export default function LegacyPage() {
                 <TextLink href="/work">View the work</TextLink>
                 <TextLink href="/contact">Commission a project</TextLink>
               </div>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>

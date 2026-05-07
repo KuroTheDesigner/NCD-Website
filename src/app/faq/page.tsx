@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { TextLink } from "@/components/ui/text-link";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 import { faqs, faqCategories } from "@/content/faqs";
 
@@ -18,7 +19,7 @@ export default function FAQPage() {
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
           <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 flex flex-col gap-7 md:col-span-8">
+            <FadeUp className="col-span-12 flex flex-col gap-7 md:col-span-8">
               <MetadataLine>
                 <span>FAQ</span>
                 <span>{faqs.length} questions</span>
@@ -37,7 +38,7 @@ export default function FAQPage() {
                 If you do not find what you need here, email us directly or use
                 the contact form.
               </p>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -51,15 +52,16 @@ export default function FAQPage() {
           <Section key={cat.id} aria-labelledby={`faq-cat-${cat.id}`}>
             <Container>
               <div className="grid grid-cols-12 gap-8 md:gap-12">
-                <div className="col-span-12 md:col-span-2">
+                <FadeUp className="col-span-12 md:col-span-2">
                   <MetadataLine id={`faq-cat-${cat.id}`}>
                     <span>{cat.label}</span>
                   </MetadataLine>
-                </div>
+                </FadeUp>
                 <div className="col-span-12 md:col-span-10 lg:col-span-8">
                   {group.map((faq, i) => (
-                    <div
+                    <FadeUp
                       key={i}
+                      delay={i * 0.1}
                       className="border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] py-8 md:grid md:grid-cols-2 md:gap-12"
                     >
                       <h2
@@ -73,7 +75,7 @@ export default function FAQPage() {
                       <p className="text-[0.9375rem] leading-[1.65] text-[var(--color-ink-500)]">
                         {faq.answer}
                       </p>
-                    </div>
+                    </FadeUp>
                   ))}
                 </div>
               </div>
@@ -85,13 +87,13 @@ export default function FAQPage() {
       {/* Still have questions CTA */}
       <Section>
         <Container>
-          <div className="flex flex-col gap-4 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-12 md:flex-row md:items-center md:justify-between">
+          <FadeUp className="flex flex-col gap-4 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-12 md:flex-row md:items-center md:justify-between">
             <p className="max-w-[52ch] text-[1rem] leading-[1.65] text-[var(--color-ink-500)]">
               Still have a question? Reach out directly — we respond within two
               working days.
             </p>
             <TextLink href="/contact">Get in touch</TextLink>
-          </div>
+          </FadeUp>
         </Container>
       </Section>
     </>

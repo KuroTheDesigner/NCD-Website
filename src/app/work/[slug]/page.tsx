@@ -8,6 +8,7 @@ import { TextLink } from "@/components/ui/text-link";
 import { CaseStudyHero } from "@/components/work/case-study-hero";
 import { StickyGallery } from "@/components/work/sticky-gallery";
 import { StandardGallery } from "@/components/work/standard-gallery";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 import {
   getProjectBySlug,
@@ -54,7 +55,7 @@ export default async function CaseStudyPage({ params }: Props) {
       <Section>
         <Container>
           <div className="grid grid-cols-12 gap-8 md:gap-12">
-            <div className="col-span-12 flex flex-col gap-5 md:col-span-8 lg:col-span-7">
+            <FadeUp className="col-span-12 flex flex-col gap-5 md:col-span-8 lg:col-span-7">
               <MetadataLine>
                 <span>{location}</span>
                 <span>{year}</span>
@@ -70,13 +71,13 @@ export default async function CaseStudyPage({ params }: Props) {
               >
                 {project.title}
               </h1>
-            </div>
+            </FadeUp>
 
-            <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-7 lg:col-start-5">
+            <FadeUp delay={0.1} className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-7 lg:col-start-5">
               <p className="text-[1.0625rem] md:text-[1.2rem] leading-[1.65] text-[var(--color-ink-500)]">
                 {project.summary}
               </p>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -84,16 +85,18 @@ export default async function CaseStudyPage({ params }: Props) {
       {/* Gallery */}
       <Section className="!pt-0">
         <Container>
-          {isFlagship ? (
-            <StickyGallery
-              eyebrow="Project documentation"
-              title="Built drawings and site record"
-              description="Photographs and drawings from the studio archive. All imagery is provisional — final archival photography will be supplied by the client."
-              images={project.images}
-            />
-          ) : (
-            <StandardGallery images={project.images} />
-          )}
+          <FadeUp>
+            {isFlagship ? (
+              <StickyGallery
+                eyebrow="Project documentation"
+                title="Built drawings and site record"
+                description="Photographs and drawings from the studio archive. All imagery is provisional — final archival photography will be supplied by the client."
+                images={project.images}
+              />
+            ) : (
+              <StandardGallery images={project.images} />
+            )}
+          </FadeUp>
         </Container>
       </Section>
 
@@ -102,12 +105,12 @@ export default async function CaseStudyPage({ params }: Props) {
         <Section>
           <Container>
             <div className="grid grid-cols-12 gap-8">
-              <div className="col-span-12 md:col-span-2">
+              <FadeUp className="col-span-12 md:col-span-2">
                 <MetadataLine>
                   <span>Credits</span>
                 </MetadataLine>
-              </div>
-              <dl className="col-span-12 grid grid-cols-1 gap-x-12 gap-y-4 md:col-span-10 md:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+              </FadeUp>
+              <FadeUp delay={0.1} className="col-span-12 grid grid-cols-1 gap-x-12 gap-y-4 md:col-span-10 md:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
                 {project.credits.map((c) => (
                   <div key={c.role} className="flex flex-col gap-1">
                     <dt className="font-[var(--font-mono)] text-[0.6875rem] uppercase [letter-spacing:var(--tracking-label)] text-[var(--color-stone-500)]">
@@ -118,7 +121,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     </dd>
                   </div>
                 ))}
-              </dl>
+              </FadeUp>
             </div>
           </Container>
         </Section>
@@ -131,7 +134,7 @@ export default async function CaseStudyPage({ params }: Props) {
           className="border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)]"
         >
           <Container className="py-14 md:py-20">
-            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <FadeUp className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               <MetadataLine>
                 <span>Next project</span>
               </MetadataLine>
@@ -145,7 +148,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   {nextProject.title}
                 </span>
               </TextLink>
-            </div>
+            </FadeUp>
           </Container>
         </section>
       )}

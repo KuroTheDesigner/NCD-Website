@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { WorkIndex } from "@/components/work/work-index";
+import { FadeUp } from "@/components/ui/fade-up";
 import { getIndexProjects } from "@/content/projects";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function WorkPage() {
     <>
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
-          <div className="flex flex-col gap-7 md:gap-9">
+          <FadeUp className="flex flex-col gap-7 md:gap-9">
             <MetadataLine>
               <span>Selected projects</span>
               <span>{earliest} — Present</span>
@@ -38,7 +39,7 @@ export default function WorkPage() {
               six decades of practice. Filter by category or decade to see the
               work in context.
             </p>
-          </div>
+          </FadeUp>
         </Container>
       </Section>
 

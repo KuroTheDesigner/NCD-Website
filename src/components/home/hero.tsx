@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { LinkButton } from "@/components/home/link-button";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 
 /**
@@ -24,31 +28,38 @@ export function HomeHero() {
           "aspect-[4/5] md:aspect-auto",
         )}
       >
-        <Image
-          src="https://picsum.photos/seed/dominican-chapel-ibadan/1600/1200"
-          alt="Dominican Chapel, Ibadan — laterite masonry and timber roof framing against the Samonda Hill skyline at dusk."
-          fill
-          priority
-          sizes="(min-width: 1024px) 52vw, (min-width: 768px) 58vw, 100vw"
-          className="object-cover"
-        />
-        {/* Warm fade into Bone — never pure black */}
-        <div
-          aria-hidden="true"
-          className={cn(
-            "pointer-events-none absolute inset-0",
-            "bg-[linear-gradient(to_right,var(--color-bone)_0%,transparent_35%)]",
-            "md:bg-[linear-gradient(to_right,var(--color-bone)_0%,transparent_28%)]",
-          )}
-        />
-        <div
-          aria-hidden="true"
-          className={cn(
-            "pointer-events-none absolute inset-x-0 bottom-0 h-1/3",
-            "bg-[linear-gradient(to_top,rgba(27,23,20,0.32),transparent)]",
-            "md:hidden",
-          )}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.36, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="https://picsum.photos/seed/dominican-chapel-ibadan/1600/1200"
+            alt="Dominican Chapel, Ibadan — laterite masonry and timber roof framing against the Samonda Hill skyline at dusk."
+            fill
+            priority
+            sizes="(min-width: 1024px) 52vw, (min-width: 768px) 58vw, 100vw"
+            className="object-cover"
+          />
+          {/* Warm fade into Bone — never pure black */}
+          <div
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute inset-0",
+              "bg-[linear-gradient(to_right,var(--color-bone)_0%,transparent_35%)]",
+              "md:bg-[linear-gradient(to_right,var(--color-bone)_0%,transparent_28%)]",
+            )}
+          />
+          <div
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute inset-x-0 bottom-0 h-1/3",
+              "bg-[linear-gradient(to_top,rgba(27,23,20,0.32),transparent)]",
+              "md:hidden",
+            )}
+          />
+        </motion.div>
       </div>
 
       <div
@@ -59,7 +70,7 @@ export function HomeHero() {
       >
         <Container className="flex-1">
           <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-12 flex flex-col gap-8 md:col-span-8 lg:col-span-7">
+            <FadeUp className="col-span-12 flex flex-col gap-8 md:col-span-8 lg:col-span-7">
               <MetadataLine>
                 <span>Est. Ibadan</span>
                 <span>Design</span>
@@ -99,7 +110,7 @@ export function HomeHero() {
                   Start a project
                 </LinkButton>
               </div>
-            </div>
+            </FadeUp>
           </div>
         </Container>
 

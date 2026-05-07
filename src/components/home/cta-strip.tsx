@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { LinkButton } from "@/components/home/link-button";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 
 export function CtaStrip() {
@@ -11,7 +12,7 @@ export function CtaStrip() {
     >
       <Container className="py-28 md:py-40">
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 flex flex-col gap-10 md:col-span-9 lg:col-span-8">
+          <FadeUp className="col-span-12 flex flex-col gap-10 md:col-span-9 lg:col-span-8">
             <MetadataLine className="!text-[var(--color-stone-400)]">
               <span>New Culture Designs</span>
               <span>Ibadan · Nigeria</span>
@@ -52,7 +53,7 @@ export function CtaStrip() {
                 Book a studio visit
               </LinkButton>
             </div>
-          </div>
+          </FadeUp>
         </div>
       </Container>
     </section>

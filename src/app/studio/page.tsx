@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { TextLink } from "@/components/ui/text-link";
 import { LinkButton } from "@/components/home/link-button";
+import { FadeUp } from "@/components/ui/fade-up";
 import { cn } from "@/lib/cn";
 import { team } from "@/content/team";
 import { values } from "@/content/values";
@@ -23,7 +24,7 @@ export default function StudioPage() {
       <Section className="pt-16 md:pt-24 lg:pt-28">
         <Container>
           <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 flex flex-col gap-7 md:col-span-8 lg:col-span-7">
+            <FadeUp className="col-span-12 flex flex-col gap-7 md:col-span-8 lg:col-span-7">
               <MetadataLine>
                 <span>The practice</span>
                 <span>Est. Ibadan, 1967</span>
@@ -44,7 +45,7 @@ export default function StudioPage() {
                 relationship with the site — a discipline inherited from our
                 founder and applied to every commission.
               </p>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -53,12 +54,12 @@ export default function StudioPage() {
       <Section aria-labelledby="mission-heading">
         <Container>
           <div className="grid grid-cols-12 gap-8 md:gap-12">
-            <div className="col-span-12 md:col-span-2">
+            <FadeUp className="col-span-12 md:col-span-2">
               <MetadataLine>
                 <span>Mission</span>
               </MetadataLine>
-            </div>
-            <div className="col-span-12 flex flex-col gap-10 md:col-span-10 lg:col-span-9">
+            </FadeUp>
+            <FadeUp delay={0.1} className="col-span-12 flex flex-col gap-10 md:col-span-10 lg:col-span-9">
               <h2
                 id="mission-heading"
                 className={cn(
@@ -79,7 +80,7 @@ export default function StudioPage() {
                 critical moment. Every building we put our name on is expected
                 to outlast its brief.
               </p>
-            </div>
+            </FadeUp>
           </div>
         </Container>
       </Section>
@@ -87,14 +88,14 @@ export default function StudioPage() {
       {/* Values */}
       <Section aria-labelledby="values-heading">
         <Container>
-          <div className="mb-10 flex items-end justify-between gap-6 md:mb-14">
+          <FadeUp className="mb-10 flex items-end justify-between gap-6 md:mb-14">
             <MetadataLine id="values-heading" as="h2">
               <span>What we stand for</span>
             </MetadataLine>
-          </div>
+          </FadeUp>
           <div className="grid grid-cols-1 gap-x-10 gap-y-10 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-10 md:grid-cols-2 lg:grid-cols-3">
             {values.map((v, i) => (
-              <div key={v.id} className="flex flex-col gap-3">
+              <FadeUp key={v.id} delay={i * 0.1} className="flex flex-col gap-3">
                 <span className="font-[var(--font-mono)] text-[0.625rem] uppercase [letter-spacing:var(--tracking-label)] text-[var(--color-stone-500)]">
                   0{i + 1}
                 </span>
@@ -109,7 +110,7 @@ export default function StudioPage() {
                 <p className="text-[0.9375rem] leading-[1.6] text-[var(--color-ink-500)]">
                   {v.description}
                 </p>
-              </div>
+              </FadeUp>
             ))}
           </div>
         </Container>
@@ -118,16 +119,17 @@ export default function StudioPage() {
       {/* Process */}
       <Section aria-labelledby="process-heading">
         <Container>
-          <div className="mb-10 md:mb-14">
+          <FadeUp className="mb-10 md:mb-14">
             <MetadataLine id="process-heading" as="h2">
               <span>How we work</span>
               <span>Five stages</span>
             </MetadataLine>
-          </div>
+          </FadeUp>
           <div className="divide-y divide-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)]">
             {process.map((step, i) => (
-              <div
+              <FadeUp
                 key={step.id}
+                delay={i * 0.1}
                 className="grid grid-cols-12 gap-8 py-10 md:py-12"
               >
                 <div className="col-span-12 md:col-span-2">
@@ -148,7 +150,7 @@ export default function StudioPage() {
                     {step.description}
                   </p>
                 </div>
-              </div>
+              </FadeUp>
             ))}
           </div>
         </Container>
@@ -157,15 +159,15 @@ export default function StudioPage() {
       {/* Team */}
       <Section aria-labelledby="team-heading">
         <Container>
-          <div className="mb-10 md:mb-14">
+          <FadeUp className="mb-10 md:mb-14">
             <MetadataLine id="team-heading" as="h2">
               <span>The team</span>
               <span>Leadership</span>
             </MetadataLine>
-          </div>
+          </FadeUp>
           <div className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
-            {team.map((member) => (
-              <div key={member.id} className="flex flex-col gap-5">
+            {team.map((member, i) => (
+              <FadeUp key={member.id} delay={i * 0.1} className="flex flex-col gap-5">
                 <div
                   className={cn(
                     "relative w-full overflow-hidden rounded-[var(--radius-sm)] bg-[var(--color-ash-200)]",
@@ -203,7 +205,7 @@ export default function StudioPage() {
                     {member.bio}
                   </p>
                 </div>
-              </div>
+              </FadeUp>
             ))}
           </div>
         </Container>
@@ -212,14 +214,14 @@ export default function StudioPage() {
       {/* Legacy CTA */}
       <Section>
         <Container>
-          <div className="flex flex-col gap-6 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-12 md:flex-row md:items-center md:justify-between">
+          <FadeUp className="flex flex-col gap-6 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-12 md:flex-row md:items-center md:justify-between">
             <p className="max-w-[52ch] text-[1rem] leading-[1.65] text-[var(--color-ink-500)]">
               The full story of Demas Nwoko and the founding of the practice —
               including the Dominican Chapel, the Venice Golden Lion, and what
               came before.
             </p>
             <TextLink href="/legacy">Read the legacy</TextLink>
-          </div>
+          </FadeUp>
         </Container>
       </Section>
 
@@ -229,7 +231,7 @@ export default function StudioPage() {
         className="bg-[var(--color-ink)] text-[var(--color-bone)]"
       >
         <Container className="py-24 md:py-36">
-          <div className="flex flex-col gap-8 md:gap-10 lg:max-w-[72%]">
+          <FadeUp className="flex flex-col gap-8 md:gap-10 lg:max-w-[72%]">
             <MetadataLine className="!text-[var(--color-stone-400)]">
               <span>New Culture Designs</span>
               <span>Ibadan · Nigeria</span>
@@ -262,7 +264,7 @@ export default function StudioPage() {
                 View services
               </LinkButton>
             </div>
-          </div>
+          </FadeUp>
         </Container>
       </section>
     </>
