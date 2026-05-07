@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------
+   New Culture Designs — Design Tokens
+   Warm earthen palette drawn from laterite, bone, ink.
+   No pure #000 or #FFF, no cool grays, no Inter.
+   ---------------------------------------------------------------------- */
+
+@theme {
+  /* ---------- Color: Bone (background canvas) ---------- */
+  --color-bone: #f2ece0;
+  --color-bone-50: #fbf8f2;
+  --color-bone-100: #f7f2e8;
+  --color-bone-200: #f2ece0;
+  --color-bone-300: #ebe3d2;
+  --color-bone-400: #e2d8c2;
+
+  /* ---------- Color: Ink (text / structural) ---------- */
+  --color-ink: #1b1714;
+  --color-ink-500: #4a413b;
+  --color-ink-700: #2e2722;
+  --color-ink-900: #1b1714;
+  --color-ink-950: #120f0c;
+
+  /* ---------- Color: Laterite (single accent) ---------- */
+  --color-laterite: #b4502c;
+  --color-laterite-100: #f5dccf;
+  --color-laterite-300: #e2a287;
+  --color-laterite-500: #b4502c;
+  --color-laterite-700: #8a3b1f;
+  --color-laterite-900: #5e2711;
+
+  /* ---------- Color: Stone (secondary neutral) ---------- */
+  --color-stone: #8a8275;
+  --color-stone-400: #a69d8e;
+  --color-stone-500: #8a8275;
+  --color-stone-600: #70695e;
+  --color-stone-700: #58524a;
+
+  /* ---------- Color: Ash (surface / card fill) ---------- */
+  --color-ash: #d9d2c4;
+  --color-ash-100: #ede7da;
+  --color-ash-200: #e3ddcf;
+  --color-ash-300: #d9d2c4;
+  --color-ash-400: #c7bfae;
+
+  /* ---------- Fonts ---------- */
+  --font-display-fraunces: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body-outfit: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono-jetbrains: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+  --font-display: var(--font-display-fraunces);
+  --font-body: var(--font-body-outfit);
+  --font-mono: var(--font-mono-jetbrains);
+
+  /* ---------- Type scale (fluid-ish) ---------- */
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.75rem;
+  --text-8xl: 6rem;
+  --text-9xl: 8rem;
+
+  /* ---------- Tracking presets ---------- */
+  --tracking-display: -0.03em;
+  --tracking-body: -0.005em;
+  --tracking-label: 0.16em;
+  --tracking-mono: 0.02em;
+
+  /* ---------- Leading presets ---------- */
+  --leading-display: 0.95;
+  --leading-hero: 1.02;
+  --leading-body: 1.65;
+  --leading-label: 1.2;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 14px;
+
+  /* ---------- Shadows (warm tinted, never pure black) ---------- */
+  --shadow-soft:
+    0 2px 8px -4px rgba(27, 23, 20, 0.10),
+    0 12px 40px -12px rgba(27, 23, 20, 0.08);
+  --shadow-card:
+    0 1px 2px -1px rgba(27, 23, 20, 0.06),
+    0 8px 24px -10px rgba(27, 23, 20, 0.10);
+  --shadow-lift:
+    0 4px 12px -6px rgba(27, 23, 20, 0.12),
+    0 24px 60px -20px rgba(27, 23, 20, 0.14);
+}
+
+/* ----------------------------------------------------------------------
+   Base — wrapped in @layer base so Tailwind utilities can override
+   ---------------------------------------------------------------------- */
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: var(--tracking-body);
+    line-height: var(--leading-body);
+  }
+
+  /* Editorial headline defaults */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
+    text-wrap: balance;
+    color: var(--color-ink);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Link resets — utilities override this via @layer utilities */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-laterite);
+    color: var(--color-bone);
+  }
+
+  /* Visible focus — keyboard only */
+  :focus-visible {
+    outline: 2px solid var(--color-laterite);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* ----------------------------------------------------------------------
+   Skip-to-content link
+   ---------------------------------------------------------------------- */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transform: translateY(-150%);
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--color-laterite);
+  outline-offset: 2px;
+}
+
+/* ----------------------------------------------------------------------
+   Grain overlay — fixed, pointer-events:none, ultra-low opacity
+   SVG fractal noise baked in as data URI. Not applied to scrolling content.
+   ---------------------------------------------------------------------- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+
+/* ----------------------------------------------------------------------
+   Kinetic marquee — project names strip above footer
+   Motion is reserved for project subjects. Opt-out on reduced motion.
+   ---------------------------------------------------------------------- */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 6rem,
+    #000 calc(100% - 6rem),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 6rem,
+    #000 calc(100% - 6rem),
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 3rem;
+  padding-right: 3rem;
+  animation: marquee-slide 48s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-slide {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ----------------------------------------------------------------------
+   Reduced motion — global motion opt-out
+   ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+}
