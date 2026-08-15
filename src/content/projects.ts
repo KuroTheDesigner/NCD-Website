@@ -1,7 +1,6 @@
 /**
- * Project content seed.
- * Placeholder imagery uses picsum.photos with stable seeds derived from slug.
- * Replace with final client-supplied assets — tracked in src/assets/README.md.
+ * Project content catalogue populated from Anyibofu Ugbodaga's authentic portfolio.
+ * All imagery is locally stored in /public/images/projects/.
  */
 
 export type ProjectStatus = "flagship" | "standard" | "private";
@@ -35,9 +34,9 @@ export type Project = {
   yearStart: number;
   yearEnd?: number;
   /**
-   * `flagship` — long-form case study (cover, brief, approach, 8–12 images,
+   * `flagship` — long-form case study (cover, brief, approach, images,
    * plans, pull quote, credits).
-   * `standard` — condensed (cover, paragraph summary, 4–6 images, credits).
+   * `standard` — condensed (cover, paragraph summary, gallery images, credits).
    * `private` — confidential commission; redacted location + anonymized client.
    */
   status: ProjectStatus;
@@ -47,97 +46,7 @@ export type Project = {
   credits: ProjectCredit[];
 };
 
-function placeholder(slug: string, seed: string, alt: string): ProjectImage {
-  return {
-    src: `https://picsum.photos/seed/${slug}-${seed}/1920/1280`,
-    alt,
-  };
-}
-
 export const projects: Project[] = [
-  {
-    id: "dominican-chapel-ibadan",
-    slug: "dominican-chapel-ibadan",
-    title: "Dominican Chapel, Ibadan",
-    category: "Cultural",
-    location: "Ibadan, Oyo State, Nigeria",
-    yearStart: 1970,
-    yearEnd: 1975,
-    status: "flagship",
-    summary:
-      "A laterite-and-timber sanctuary for the Dominican order on Samonda Hill, crowned by a bell tower that translates Christianity's crown of thorns through the vocabulary of Hausa vernacular pinnacles. Every material was sourced on site; every line was drawn to ventilate, admit, and shade the West African sun.",
-    heroImage: placeholder(
-      "dominican-chapel-ibadan",
-      "hero",
-      "Dominican Chapel, Ibadan — laterite walls and timber roof structure",
-    ),
-    images: [
-      placeholder("dominican-chapel-ibadan", "01", "Chapel exterior at dusk"),
-      placeholder(
-        "dominican-chapel-ibadan",
-        "02",
-        "Bell tower detail, Hausa-inflected pinnacles",
-      ),
-      placeholder(
-        "dominican-chapel-ibadan",
-        "03",
-        "Interior nave with timber roof structure",
-      ),
-      placeholder(
-        "dominican-chapel-ibadan",
-        "04",
-        "Laterite stonework at entrance",
-      ),
-    ],
-    credits: [
-      { role: "Architect", name: "Demas Nwoko" },
-      { role: "Client", name: "Dominican Order, Ibadan" },
-      { role: "Photography", name: "Placeholder — client to supply" },
-    ],
-  },
-  {
-    id: "new-culture-studios-ibadan",
-    slug: "new-culture-studios-ibadan",
-    title: "New Culture Studios, Ibadan",
-    category: "Cultural",
-    location: "Ibadan, Oyo State, Nigeria",
-    yearStart: 1967,
-    status: "flagship",
-    summary:
-      "A private residence that grew, over decades, into a public art hub: galleries, performance spaces, guest quarters, and a retractable amphitheatre roof held open to the sky. New Culture Studios is the built argument for an architecture authentic to its place — the working laboratory behind everything that followed.",
-    heroImage: placeholder(
-      "new-culture-studios-ibadan",
-      "hero",
-      "New Culture Studios compound, Ibadan",
-    ),
-    images: [
-      placeholder(
-        "new-culture-studios-ibadan",
-        "01",
-        "Courtyard with timber colonnade",
-      ),
-      placeholder(
-        "new-culture-studios-ibadan",
-        "02",
-        "Amphitheatre seating carved into the site",
-      ),
-      placeholder(
-        "new-culture-studios-ibadan",
-        "03",
-        "Gallery interior with filtered daylight",
-      ),
-      placeholder(
-        "new-culture-studios-ibadan",
-        "04",
-        "Exterior stairway of poured laterite",
-      ),
-    ],
-    credits: [
-      { role: "Architect", name: "Demas Nwoko" },
-      { role: "Client", name: "New Culture Studios" },
-      { role: "Photography", name: "Placeholder — client to supply" },
-    ],
-  },
   {
     id: "oba-akenzua-cultural-centre",
     slug: "oba-akenzua-cultural-centre",
@@ -147,449 +56,447 @@ export const projects: Project[] = [
     yearStart: 1972,
     status: "flagship",
     summary:
-      "A public cultural building modelled after the early language of New Culture Studios and scaled up for civic use. Rooted in Edo iconography and built with local labour, the centre anchors the city's cultural life while extending the firm's investigation of Nigerian vernacular at public scale.",
-    heroImage: placeholder(
-      "oba-akenzua-cultural-centre",
-      "hero",
-      "Oba Akenzua Cultural Centre, Benin City",
-    ),
+      "A civic cultural landmark delivered for the Edo State Government, including the building's public forecourt and gathering plaza. Designed by master architect Demas Nwoko with Anyibofu Ugbodaga, the current phase involves preparation for completion and restoration. The design draws on the practice's long-standing engagement with Nigerian cultural and heritage architecture, translating it into a contemporary civic venue for public gathering and ceremony.",
+    heroImage: {
+      src: "/images/projects/oba-akenzua-cultural-centre/hero.jpg",
+      alt: "Oba Akenzua Cultural Centre, Benin City — civic plaza and main elevation",
+    },
     images: [
-      placeholder(
-        "oba-akenzua-cultural-centre",
-        "01",
-        "Façade elevation with civic plaza",
-      ),
-      placeholder(
-        "oba-akenzua-cultural-centre",
-        "02",
-        "Performance hall interior",
-      ),
-      placeholder(
-        "oba-akenzua-cultural-centre",
-        "03",
-        "Entrance canopy and carved screens",
-      ),
-      placeholder(
-        "oba-akenzua-cultural-centre",
-        "04",
-        "Rear elevation and landscaping",
-      ),
+      {
+        src: "/images/projects/oba-akenzua-cultural-centre/hero.jpg",
+        alt: "Oba Akenzua Cultural Centre — civic plaza and main elevation",
+        caption: "Main civic facade overlooking the public gathering forecourt",
+      },
+      {
+        src: "/images/projects/oba-akenzua-cultural-centre/detail-screen.jpg",
+        alt: "Oba Akenzua Cultural Centre — carved screen and entrance canopy detail",
+        caption: "Architectural screen and entrance canopy detail rooted in Edo iconography",
+      },
     ],
     credits: [
-      { role: "Architect", name: "Demas Nwoko" },
+      { role: "Architect", name: "Demas Nwoko & Anyibofu Ugbodaga" },
       { role: "Client", name: "Edo State Government" },
-      { role: "Photography", name: "Placeholder — client to supply" },
+      { role: "Construction & Restoration", name: "Ganttworks Limited" },
     ],
   },
   {
-    id: "mbari-cultural-pavilion",
-    slug: "mbari-cultural-pavilion",
-    title: "Mbari Cultural Pavilion",
-    category: "Cultural",
-    location: "Owerri, Imo State, Nigeria",
-    yearStart: 2014,
-    status: "standard",
-    summary:
-      "A low-slung pavilion for communal gatherings and exhibitions, sited within an active compound. The roof floats on slender timber columns while laterite plinths ground the structure to the red earth beneath.",
-    heroImage: placeholder(
-      "mbari-cultural-pavilion",
-      "hero",
-      "Mbari Cultural Pavilion — elevated roof structure over laterite plinths",
-    ),
-    images: [
-      placeholder(
-        "mbari-cultural-pavilion",
-        "1",
-        "Pavilion exterior from the approach",
-      ),
-      placeholder(
-        "mbari-cultural-pavilion",
-        "2",
-        "Timber columns supporting the roof plane",
-      ),
-      placeholder(
-        "mbari-cultural-pavilion",
-        "3",
-        "Open-air gathering space at golden hour",
-      ),
-      placeholder(
-        "mbari-cultural-pavilion",
-        "4",
-        "Laterite plinth detail at the entry",
-      ),
-    ],
-    credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Okafor & Associates" },
-      { role: "Client", name: "Mbari Cultural Trust" },
-      { role: "Photography", name: "Placeholder — client to supply" },
-    ],
-  },
-  {
-    id: "ikoyi-family-residence",
-    slug: "ikoyi-family-residence",
-    title: "Ikoyi Family Residence",
-    category: "Residential",
-    location: "Lagos, Nigeria",
-    yearStart: 2019,
-    status: "private",
-    summary:
-      "A private family residence on a walled Ikoyi lot, organised around a central courtyard and a stand of mature trees retained from the original site. Materials were kept few and quiet — plastered masonry, timber screens, bronze ironmongery.",
-    heroImage: placeholder(
-      "ikoyi-family-residence",
-      "hero",
-      "Private residence exterior with courtyard planting",
-    ),
-    images: [
-      placeholder(
-        "ikoyi-family-residence",
-        "1",
-        "Courtyard view through a timber screen",
-      ),
-      placeholder(
-        "ikoyi-family-residence",
-        "2",
-        "Living pavilion with tall glazed openings",
-      ),
-      placeholder(
-        "ikoyi-family-residence",
-        "3",
-        "Covered walkway between wings",
-      ),
-      placeholder(
-        "ikoyi-family-residence",
-        "4",
-        "Upper-floor terrace under a timber pergola",
-      ),
-    ],
-    credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Adewale Engineering" },
-      { role: "Client", name: "Private Commission" },
-      { role: "Photography", name: "Placeholder — client to supply" },
-    ],
-  },
-  {
-    id: "university-of-ibadan-chapel",
-    slug: "university-of-ibadan-chapel",
-    title: "University of Ibadan Chapel Expansion",
+    id: "dominican-chapel-ibadan",
+    slug: "dominican-chapel-ibadan",
+    title: "Dominican Institute & Seminary, Ibadan",
     category: "Cultural",
     location: "Ibadan, Oyo State, Nigeria",
-    yearStart: 2011,
-    status: "standard",
+    yearStart: 1970,
+    yearEnd: 1975,
+    status: "flagship",
     summary:
-      "An expansion to an existing campus chapel that doubles seating capacity without disturbing the original nave. A new timber clerestory draws filtered daylight down onto the altar across the course of the day.",
-    heroImage: placeholder(
-      "university-of-ibadan-chapel",
-      "hero",
-      "University of Ibadan Chapel — expanded nave with clerestory light",
-    ),
+      "A landmark sacred and educational complex for the Dominican order on Samonda Hill. Designed, built, and maintained across generations with Demas Nwoko and Anyibofu Ugbodaga, crowned by a bell tower that translates Christianity's crown of thorns through the vocabulary of Hausa vernacular pinnacles. Every material was sourced on site; every line was drawn to ventilate, admit, and shade the West African sun.",
+    heroImage: {
+      src: "/images/projects/dominican-chapel-ibadan/hero.jpg",
+      alt: "Dominican Institute & Seminary, Ibadan — sanctuary and timber roof structure",
+    },
     images: [
-      placeholder(
-        "university-of-ibadan-chapel",
-        "1",
-        "Chapel exterior from the campus approach",
-      ),
-      placeholder(
-        "university-of-ibadan-chapel",
-        "2",
-        "Clerestory admitting morning light",
-      ),
-      placeholder(
-        "university-of-ibadan-chapel",
-        "3",
-        "Interior nave with timber seating",
-      ),
-      placeholder(
-        "university-of-ibadan-chapel",
-        "4",
-        "Side aisle connecting old and new volumes",
-      ),
-      placeholder(
-        "university-of-ibadan-chapel",
-        "5",
-        "Entry narthex and carved doors",
-      ),
+      {
+        src: "/images/projects/dominican-chapel-ibadan/hero.jpg",
+        alt: "Dominican Institute & Seminary — sanctuary interior with timber roof structure",
+        caption: "Nave and sanctuary framed with site-crafted timber trusses",
+      },
+      {
+        src: "/images/projects/dominican-chapel-ibadan/compound-overview.jpg",
+        alt: "Dominican Chapel — compound overview and architectural volume",
+        caption: "Laterite masonry sanctuary nestled within the Samonda Hill landscape",
+      },
     ],
     credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Balogun Structural" },
-      { role: "Client", name: "University of Ibadan Chaplaincy" },
-      { role: "Photography", name: "Placeholder — client to supply" },
+      { role: "Architect", name: "Demas Nwoko & Anyibofu Ugbodaga" },
+      { role: "Client", name: "Dominican Order, Ibadan" },
+      { role: "Maintenance & Construction", name: "Ganttworks Limited" },
     ],
   },
   {
-    id: "lagos-corporate-headquarters",
-    slug: "lagos-corporate-headquarters",
-    title: "Corporate Headquarters, Victoria Island",
-    category: "Corporate",
-    location: "Lagos, Nigeria",
-    yearStart: 2021,
-    status: "standard",
+    id: "idumuje-ugboko-royal-palace",
+    slug: "idumuje-ugboko-royal-palace",
+    title: "Forecourt of Idumuje-Ugboko Royal Palace",
+    category: "Cultural",
+    location: "Idumuje-Ugboko, Delta State, Nigeria",
+    yearStart: 1907,
+    status: "flagship",
     summary:
-      "A ten-storey headquarters tuned to the Lagos climate — deep concrete brises-soleil on the western face, a planted atrium that pulls air through the building's core, and ground-floor arcade tying the tower into its street.",
-    heroImage: placeholder(
-      "lagos-corporate-headquarters",
-      "hero",
-      "Victoria Island corporate headquarters at dusk",
-    ),
+      "A cultural landmark that dates back to 1907, initially designed by Obi Nkeze 1st, undergoing a public forecourt enhancement and restoration of the 'Ogwa'. This serves as the first phase of a complete restoration and preservation project of a heritage cultural complex. The design draws on the practice's long-standing engagement with the culture and heritage of Idumuje-Ugboko, with ancestral connection to the ancient Benin Kingdom, reflecting the openness of the palace to its people.",
+    heroImage: {
+      src: "/images/projects/idumuje-ugboko-royal-palace/hero.jpg",
+      alt: "Forecourt of Idumuje-Ugboko Royal Palace — historic Ogwa and ceremonial court",
+    },
     images: [
-      placeholder(
-        "lagos-corporate-headquarters",
-        "1",
-        "Western elevation with brise-soleil shading",
-      ),
-      placeholder(
-        "lagos-corporate-headquarters",
-        "2",
-        "Planted atrium from the ground floor",
-      ),
-      placeholder(
-        "lagos-corporate-headquarters",
-        "3",
-        "Arcade and street-level entry",
-      ),
-      placeholder(
-        "lagos-corporate-headquarters",
-        "4",
-        "Executive floor looking toward the lagoon",
-      ),
-      placeholder(
-        "lagos-corporate-headquarters",
-        "5",
-        "Lobby and reception desk",
-      ),
+      {
+        src: "/images/projects/idumuje-ugboko-royal-palace/hero.jpg",
+        alt: "Historic Ogwa and Royal Palace court at Idumuje-Ugboko",
+        caption: "Historic palace fabric dating back to 1907",
+      },
+      {
+        src: "/images/projects/idumuje-ugboko-royal-palace/ogwa-restoration.jpg",
+        alt: "Proposed design, restoration, and preservation of the palace forecourt",
+        caption: "Architectural forecourt enhancement and restoration scheme",
+      },
     ],
     credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Adeniyi Partners" },
-      { role: "Client", name: "Private Commission" },
-      { role: "Photography", name: "Tolu Adebayo" },
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Design Consultant", name: "Demas Nwoko" },
+      { role: "Client", name: "Royal Palace of Idumuje-Ugboko" },
     ],
   },
   {
-    id: "abuja-diplomatic-residence",
-    slug: "abuja-diplomatic-residence",
-    title: "Diplomatic Residence",
-    category: "Residential",
+    id: "benedictine-monastery-ewu",
+    slug: "benedictine-monastery-ewu",
+    title: "Benedictine Monastery, Ewu",
+    category: "Cultural",
+    location: "Ewu, Edo State, Nigeria",
+    yearStart: 1992,
+    status: "standard",
+    summary:
+      "A body of ecumenical and sacred community architecture carried out in partnership with Demas Nwoko. Scope spanned full production drawings, site coordination, and comprehensive supervision for the contemplative Benedictine monastery complex in Ewu.",
+    heroImage: {
+      src: "/images/projects/benedictine-monastery-ewu/hero.jpg",
+      alt: "Benedictine Monastery, Ewu — cloister grounds and sanctuary exterior",
+    },
+    images: [
+      {
+        src: "/images/projects/benedictine-monastery-ewu/hero.jpg",
+        alt: "Benedictine Monastery, Ewu — cloister grounds and sanctuary exterior",
+      },
+    ],
+    credits: [
+      { role: "Architect", name: "Demas Nwoko & Anyibofu Ugbodaga" },
+      { role: "Client", name: "Benedictine Monks of Ewu" },
+    ],
+  },
+  {
+    id: "lady-pierce-chapel-issele-uku",
+    slug: "lady-pierce-chapel-issele-uku",
+    title: "Lady Pierce Chapel, Issele-Uku",
+    category: "Cultural",
+    location: "Issele-Uku, Delta State, Nigeria",
+    yearStart: 2005,
+    status: "standard",
+    summary:
+      "Sacred community architecture and ecumenical chapel design carried through to completion in collaboration with Demas Nwoko. The chapel integrates sculpted masonry walls, natural top lighting, and handcrafted timber interior fixtures.",
+    heroImage: {
+      src: "/images/projects/lady-pierce-chapel-issele-uku/hero.jpg",
+      alt: "Lady Pierce Chapel, Issele-Uku — exterior sanctuary and bell tower",
+    },
+    images: [
+      {
+        src: "/images/projects/lady-pierce-chapel-issele-uku/hero.jpg",
+        alt: "Lady Pierce Chapel exterior view",
+      },
+      {
+        src: "/images/projects/lady-pierce-chapel-issele-uku/elevation-drawing.png",
+        alt: "Lady Pierce Chapel architectural elevation and section drawing",
+      },
+      {
+        src: "/images/projects/lady-pierce-chapel-issele-uku/interior-sanctuary.png",
+        alt: "Lady Pierce Chapel interior sanctuary and altar view",
+      },
+    ],
+    credits: [
+      { role: "Architect", name: "Demas Nwoko & Anyibofu Ugbodaga" },
+      { role: "Client", name: "Catholic Diocese of Issele-Uku" },
+    ],
+  },
+  {
+    id: "loveworld-community-centre-park",
+    slug: "loveworld-community-centre-park",
+    title: "Loveworld Community Centre & Park",
+    category: "Cultural",
     location: "Abuja, Nigeria",
     yearStart: 2018,
     status: "standard",
     summary:
-      "An ambassadorial residence arranged around two courtyards — one public for receiving, one private for family life. The roofline quotes the rhythm of surrounding granite outcrops in slow repetition.",
-    heroImage: placeholder(
-      "abuja-diplomatic-residence",
-      "hero",
-      "Diplomatic Residence, Abuja — courtyard elevation",
-    ),
+      "A comprehensive design proposal for a vibrant community recreation and relaxation park, event centre, and food bank in Abuja. Comprises a community food bank, event centre auditorium, swimming pool, lawn tennis and basketball courts, jogging and cycling trails, and green landscaped parkland.",
+    heroImage: {
+      src: "/images/projects/loveworld-community-centre-park/hero.jpg",
+      alt: "Loveworld Community Centre & Park, Abuja — master plan and site layout",
+    },
     images: [
-      placeholder(
-        "abuja-diplomatic-residence",
-        "1",
-        "Reception courtyard at arrival",
-      ),
-      placeholder(
-        "abuja-diplomatic-residence",
-        "2",
-        "Family courtyard with water feature",
-      ),
-      placeholder(
-        "abuja-diplomatic-residence",
-        "3",
-        "Dining pavilion under a long eave",
-      ),
-      placeholder(
-        "abuja-diplomatic-residence",
-        "4",
-        "Roofline against the Abuja outcrops",
-      ),
+      {
+        src: "/images/projects/loveworld-community-centre-park/hero.jpg",
+        alt: "Master plan and site layout rendering for Loveworld Park",
+      },
+      {
+        src: "/images/projects/loveworld-community-centre-park/event-centre-render.png",
+        alt: "Community Event Centre and Pavilion architecture",
+      },
+      {
+        src: "/images/projects/loveworld-community-centre-park/sports-park-render.png",
+        alt: "Sporting facilities, tennis courts, and recreational green park",
+      },
     ],
     credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Kano Structural" },
-      { role: "Client", name: "Foreign Mission (name withheld)" },
-      { role: "Photography", name: "Placeholder — client to supply" },
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Design Practice", name: "New Culture Design & Development Centre" },
+      { role: "Client", name: "Loveworld Inc." },
     ],
   },
   {
-    id: "enugu-school-of-architecture",
-    slug: "enugu-school-of-architecture",
-    title: "School of Architecture Studio Block",
+    id: "multi-site-corporate-facilities",
+    slug: "multi-site-corporate-facilities",
+    title: "Multi-Site Delivery for Regulated & Corporate Clients",
+    category: "Corporate",
+    location: "Lagos & Abuja, Nigeria",
+    yearStart: 2008,
+    status: "standard",
+    summary:
+      "Repeat branch and executive facility delivery for leading banking, telecom, and aviation clients, taken through design, working drawing production, site supervision, and construction. Work includes Access Bank, GTBank, and Diamond Bank branches; an institutional Chairman's executive office in Abuja; and United Airlines' Lagos ticketing office.",
+    heroImage: {
+      src: "/images/projects/multi-site-corporate-facilities/united-airlines-office.jpg",
+      alt: "United Airlines Lagos ticketing office and executive interior",
+    },
+    images: [
+      {
+        src: "/images/projects/multi-site-corporate-facilities/hero.jpg",
+        alt: "Commercial banking branch facility exterior",
+      },
+      {
+        src: "/images/projects/multi-site-corporate-facilities/united-airlines-office.jpg",
+        alt: "United Airlines Lagos ticketing office and conference suite",
+      },
+      {
+        src: "/images/projects/multi-site-corporate-facilities/chairmans-office-abuja.jpg",
+        alt: "Chairman's executive office suite, Abuja",
+      },
+      {
+        src: "/images/projects/multi-site-corporate-facilities/commercial-facade.jpg",
+        alt: "Commercial building facade and entrance detailing",
+      },
+      {
+        src: "/images/projects/multi-site-corporate-facilities/office-tower.jpg",
+        alt: "Multi-storey corporate office building",
+      },
+      {
+        src: "/images/projects/multi-site-corporate-facilities/banking-hall.jpg",
+        alt: "Banking hall interior and teller concourse",
+      },
+    ],
+    credits: [
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Construction & Fit-Out", name: "Ganttworks Limited" },
+      { role: "Clients", name: "Access Bank, GTBank, Diamond Bank, United Airlines" },
+    ],
+  },
+  {
+    id: "feese-international-primary-school",
+    slug: "feese-international-primary-school",
+    title: "Feese International Primary School",
     category: "Educational",
-    location: "Enugu, Nigeria",
+    location: "Benue State, Nigeria",
+    yearStart: 2015,
+    status: "standard",
+    summary:
+      "An institutional primary education facility designed and delivered with climate-conscious classroom modules, natural cross-ventilation, generous shaded verandas, and a central courtyard for community gathering.",
+    heroImage: {
+      src: "/images/projects/feese-international-primary-school/hero.jpg",
+      alt: "Feese International Primary School, Benue — academic block and courtyard",
+    },
+    images: [
+      {
+        src: "/images/projects/feese-international-primary-school/hero.jpg",
+        alt: "Academic classroom block with shaded veranda circulation",
+      },
+      {
+        src: "/images/projects/feese-international-primary-school/courtyard-entry.jpg",
+        alt: "School entrance approach and courtyard access",
+      },
+    ],
+    credits: [
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Design Practice", name: "New Culture Design & Development Centre" },
+      { role: "Client", name: "Feese International Foundation" },
+    ],
+  },
+  {
+    id: "rainoil-service-stations",
+    slug: "rainoil-service-stations",
+    title: "RainOil Roadside Retail & Service Stations",
+    category: "Corporate",
+    location: "Ogarra (Delta), Life Camp (Abuja), Coastal Rd (Lagos)",
+    yearStart: 2017,
+    status: "standard",
+    summary:
+      "Vehicular circulation planning, forecourt engineering, canopy structure, and street-frontage architecture across multiple Nigerian high-traffic retail sites for Rainoil Limited, including completed stations in Ogarra and Life Camp and proposed schemes along the Lagos coastal corridor.",
+    heroImage: {
+      src: "/images/projects/rainoil-service-stations/hero.jpg",
+      alt: "RainOil filling and retail service station, Ogarra, Delta State",
+    },
+    images: [
+      {
+        src: "/images/projects/rainoil-service-stations/hero.jpg",
+        alt: "Completed RainOil filling and retail station in Ogarra, Delta State",
+      },
+      {
+        src: "/images/projects/rainoil-service-stations/forecourt-canopy.jpg",
+        alt: "Forecourt pump canopy and customer circulation",
+      },
+      {
+        src: "/images/projects/rainoil-service-stations/site-circulation-plan.png",
+        alt: "Vehicular circulation planning and site forecourt layout",
+      },
+      {
+        src: "/images/projects/rainoil-service-stations/canopy-elevation.png",
+        alt: "Canopy structural elevation and brand signage",
+      },
+      {
+        src: "/images/projects/rainoil-service-stations/coastal-road-elevation.png",
+        alt: "Coastal Road Lagos proposed station architectural elevation",
+      },
+      {
+        src: "/images/projects/rainoil-service-stations/life-camp-3d-model.png",
+        alt: "Life Camp Abuja station 3D architectural visualization",
+      },
+    ],
+    credits: [
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Civil & Construction Works", name: "Ganttworks Limited" },
+      { role: "Client", name: "Rainoil Limited" },
+    ],
+  },
+  {
+    id: "solgreen-agro-processing-factory",
+    slug: "solgreen-agro-processing-factory",
+    title: "Solgreen Agro-Processing Factory",
+    category: "Corporate",
+    location: "Nigeria",
+    yearStart: 2018,
+    status: "standard",
+    summary:
+      "Industrial and agro-processing facility design demonstrating the practice's versatility beyond civic and residential typologies, extending into production, processing logistics, and light-industrial architecture.",
+    heroImage: {
+      src: "/images/projects/solgreen-agro-processing-factory/hero.png",
+      alt: "Solgreen Agro-Processing Factory — industrial plant 3D visualization",
+    },
+    images: [
+      {
+        src: "/images/projects/solgreen-agro-processing-factory/hero.png",
+        alt: "Agro-processing facility 3D architectural rendering",
+      },
+      {
+        src: "/images/projects/solgreen-agro-processing-factory/factory-aerial-view.png",
+        alt: "Industrial warehouse and site logistics aerial perspective",
+      },
+    ],
+    credits: [
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Design Practice", name: "New Culture Design & Development Centre" },
+      { role: "Client", name: "Solgreen Agro Limited" },
+    ],
+  },
+  {
+    id: "private-residence-delta-state",
+    slug: "private-residence-delta-state",
+    title: "Private Residence, Delta State",
+    category: "Residential",
+    location: "Delta State, Nigeria",
     yearStart: 2016,
     status: "standard",
     summary:
-      "A purpose-built studio block for an architecture faculty — long north-facing bays for steady studio light, an open review hall at the heart, and a rooftop terrace that doubles as an outdoor crit space.",
-    heroImage: placeholder(
-      "enugu-school-of-architecture",
-      "hero",
-      "Studio block façade with north-facing bays",
-    ),
+      "A private family estate in Delta State designed to harmonize with its tropical setting. Features generous shaded verandas, sculpted roof lines, and locally adapted masonry.",
+    heroImage: {
+      src: "/images/projects/private-residence-delta-state/hero.jpg",
+      alt: "Private Residence, Delta State — entrance elevation and manicured grounds",
+    },
     images: [
-      placeholder(
-        "enugu-school-of-architecture",
-        "1",
-        "North elevation and studio windows",
-      ),
-      placeholder(
-        "enugu-school-of-architecture",
-        "2",
-        "Central review hall during a crit",
-      ),
-      placeholder(
-        "enugu-school-of-architecture",
-        "3",
-        "Studio interior with pinned drawings",
-      ),
-      placeholder(
-        "enugu-school-of-architecture",
-        "4",
-        "Rooftop terrace set up for outdoor crits",
-      ),
+      {
+        src: "/images/projects/private-residence-delta-state/hero.jpg",
+        alt: "Private Residence, Delta State — main estate elevation",
+      },
     ],
     credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Nnamdi Associates" },
-      { role: "Client", name: "Enugu State University" },
-      { role: "Photography", name: "Placeholder — client to supply" },
-    ],
-  },
-  {
-    id: "benin-civic-hall",
-    slug: "benin-civic-hall",
-    title: "Benin Civic Hall Restoration",
-    category: "Cultural",
-    location: "Benin City, Edo State, Nigeria",
-    yearStart: 2013,
-    status: "standard",
-    summary:
-      "A restoration of a mid-century civic hall damaged by years of deferred maintenance. The scope recovered original brickwork, rebuilt the timber roof with improved ventilation, and added a small back-of-house wing.",
-    heroImage: placeholder(
-      "benin-civic-hall",
-      "hero",
-      "Civic Hall restored façade with new paving",
-    ),
-    images: [
-      placeholder(
-        "benin-civic-hall",
-        "1",
-        "Main façade after restoration",
-      ),
-      placeholder(
-        "benin-civic-hall",
-        "2",
-        "Rebuilt timber roof from inside the hall",
-      ),
-      placeholder(
-        "benin-civic-hall",
-        "3",
-        "Recovered brickwork at the entrance bay",
-      ),
-      placeholder(
-        "benin-civic-hall",
-        "4",
-        "New back-of-house wing set behind the hall",
-      ),
-    ],
-    credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Osagie Consult" },
-      { role: "Client", name: "Edo State Government" },
-      { role: "Photography", name: "Placeholder — client to supply" },
-    ],
-  },
-  {
-    id: "ibadan-artists-retreat",
-    slug: "ibadan-artists-retreat",
-    title: "Artists' Retreat & Studios",
-    category: "Cultural",
-    location: "Ibadan, Oyo State, Nigeria",
-    yearStart: 2022,
-    status: "standard",
-    summary:
-      "A residency compound of nine studio-dwellings arranged along a shaded spine, each opening to a private garden. The plan concentrates shared facilities — kitchen, library, gallery — at the hinge between public and private ground.",
-    heroImage: placeholder(
-      "ibadan-artists-retreat",
-      "hero",
-      "Artists' Retreat compound — shaded spine between studios",
-    ),
-    images: [
-      placeholder(
-        "ibadan-artists-retreat",
-        "1",
-        "Shaded circulation spine with studio entries",
-      ),
-      placeholder(
-        "ibadan-artists-retreat",
-        "2",
-        "Single studio unit with private garden",
-      ),
-      placeholder(
-        "ibadan-artists-retreat",
-        "3",
-        "Shared library at the compound hinge",
-      ),
-      placeholder(
-        "ibadan-artists-retreat",
-        "4",
-        "Gallery space set up for an open studio",
-      ),
-      placeholder(
-        "ibadan-artists-retreat",
-        "5",
-        "Evening view across the compound",
-      ),
-    ],
-    credits: [
-      { role: "Architect", name: "New Culture Designs" },
-      { role: "Structural Engineer", name: "Falade Structural" },
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Construction", name: "Ganttworks Limited" },
       { role: "Client", name: "Private Commission" },
-      { role: "Photography", name: "Tolu Adebayo" },
     ],
   },
   {
-    id: "port-harcourt-interior-suite",
-    slug: "port-harcourt-interior-suite",
-    title: "Private Suite Interiors",
-    category: "Interior",
-    location: "Port Harcourt, Nigeria",
+    id: "new-culture-apartments-ibadan",
+    slug: "new-culture-apartments-ibadan",
+    title: "New Culture Apartments, Ijokodo",
+    category: "Residential",
+    location: "Ijokodo, Ibadan, Oyo State, Nigeria",
+    yearStart: 2014,
+    status: "standard",
+    summary:
+      "A multi-unit residential development in Ijokodo, Ibadan, translating New Culture's architectural ethos of community living, natural ventilation, and organic materials into high-density contemporary housing.",
+    heroImage: {
+      src: "/images/projects/new-culture-apartments-ibadan/hero.png",
+      alt: "New Culture Apartments, Ijokodo, Ibadan — architectural rendering",
+    },
+    images: [
+      {
+        src: "/images/projects/new-culture-apartments-ibadan/hero.png",
+        alt: "New Culture Apartments architectural rendering",
+      },
+    ],
+    credits: [
+      { role: "Architect", name: "New Culture Design & Development Centre" },
+      { role: "Client", name: "Private Development Commission" },
+    ],
+  },
+  {
+    id: "private-residence-maitama-abuja",
+    slug: "private-residence-maitama-abuja",
+    title: "Private Residence, Maitama",
+    category: "Residential",
+    location: "Maitama, Abuja, Nigeria",
+    yearStart: 2019,
+    status: "standard",
+    summary:
+      "A bespoke high-end private residence in the Maitama district of Abuja, distinguished by bold contemporary geometry, cantilevered sunshades, expansive full-height glazed openings, and landscaped courtyards.",
+    heroImage: {
+      src: "/images/projects/private-residence-maitama-abuja/hero.png",
+      alt: "Private Residence, Maitama, Abuja — entrance courtyard view",
+    },
+    images: [
+      {
+        src: "/images/projects/private-residence-maitama-abuja/hero.png",
+        alt: "Private Residence, Maitama — front courtyard architectural rendering",
+      },
+      {
+        src: "/images/projects/private-residence-maitama-abuja/street-elevation.png",
+        alt: "Street-front facade elevation and geometric balcony articulation",
+      },
+    ],
+    credits: [
+      { role: "Lead Architect", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Design Practice", name: "New Culture Design & Development Centre" },
+      { role: "Client", name: "Private Commission" },
+    ],
+  },
+  {
+    id: "abuja-affordable-housing-scheme",
+    slug: "abuja-affordable-housing-scheme",
+    title: "Affordable Housing Scheme, Abuja",
+    category: "Residential",
+    location: "Abuja, Nigeria",
     yearStart: 2020,
     status: "standard",
     summary:
-      "A refurbishment of a private suite inside an existing shell — walnut joinery, plastered walls in warm neutrals, brass fittings specified to patinate with use. The intervention is quiet and intended to outlast trend.",
-    heroImage: placeholder(
-      "port-harcourt-interior-suite",
-      "hero",
-      "Private suite interior with walnut joinery",
-    ),
+      "A low-income affordable housing proposal for Abuja and concept development for a 10,000-unit affordable housing scheme. Focused on sustainable construction economics, modular building efficiency, and dignified community living.",
+    heroImage: {
+      src: "/images/projects/abuja-affordable-housing-scheme/hero.png",
+      alt: "Affordable housing concept prototype for Abuja",
+    },
     images: [
-      placeholder(
-        "port-harcourt-interior-suite",
-        "1",
-        "Living area with walnut built-ins",
-      ),
-      placeholder(
-        "port-harcourt-interior-suite",
-        "2",
-        "Dressing corridor with full-height joinery",
-      ),
-      placeholder(
-        "port-harcourt-interior-suite",
-        "3",
-        "Bathroom detail with brass fittings",
-      ),
-      placeholder(
-        "port-harcourt-interior-suite",
-        "4",
-        "Reading nook at a corner window",
-      ),
+      {
+        src: "/images/projects/abuja-affordable-housing-scheme/hero.png",
+        alt: "Affordable housing modular prototype block — 3D rendering",
+      },
+      {
+        src: "/images/projects/abuja-affordable-housing-scheme/master-plan-layout.jpg",
+        alt: "10,000-unit affordable housing master plan and zoning layout",
+      },
     ],
     credits: [
-      { role: "Interior Architect", name: "New Culture Designs" },
-      { role: "Joinery", name: "Okon Woodwork" },
-      { role: "Client", name: "Private Commission" },
-      { role: "Photography", name: "Placeholder — client to supply" },
+      { role: "Lead Architect & Urban Planner", name: "Anyibofu Ugbodaga, FNIA" },
+      { role: "Design Practice", name: "New Culture Design & Development Centre" },
+      { role: "Client", name: "Affordable Housing Initiative" },
     ],
   },
 ];
@@ -621,7 +528,6 @@ export function projectDecade(p: Project): number {
 /** Public-facing location string — private commissions get a redacted form. */
 export function displayLocation(p: Project): string {
   if (p.status === "private") {
-    // Represent as city-only fallback based on stored location.
     const [, rest] = p.location.split(",");
     const city = p.location.split(",")[0].trim();
     const country = rest?.trim() ?? "";

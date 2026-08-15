@@ -35,8 +35,8 @@ export function HomeHero() {
           className="absolute inset-0"
         >
           <Image
-            src="https://picsum.photos/seed/dominican-chapel-ibadan/1600/1200"
-            alt="Dominican Chapel, Ibadan — laterite masonry and timber roof framing against the Samonda Hill skyline at dusk."
+            src="/images/projects/oba-akenzua-cultural-centre/hero.jpg"
+            alt="Oba Akenzua Cultural Centre, Benin City — civic plaza and monumental elevation."
             fill
             priority
             sizes="(min-width: 1024px) 52vw, (min-width: 768px) 58vw, 100vw"

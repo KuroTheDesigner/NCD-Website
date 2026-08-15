@@ -73,7 +73,7 @@ export const services: Service[] = [
           "We can. We will review the existing set honestly, tell you what we can carry forward and what we cannot, and give you a clear scope proposal before you commit. We do not pretend a drawing is ours when it is not.",
       },
     ],
-    relatedProjectSlugs: ["dominican-chapel-ibadan", "university-of-ibadan-chapel"],
+    relatedProjectSlugs: ["oba-akenzua-cultural-centre", "dominican-chapel-ibadan"],
   },
   {
     slug: "interior-design",
@@ -81,7 +81,7 @@ export const services: Service[] = [
     hook: "Rooms that outlast trend — material-first, commissioned joinery, no froth.",
     summary: [
       "Interior work at the studio is architectural in temperament. We treat a room as a volume first, a material palette second, and a set of objects last. The result is quieter than a stylist-led interior and tuned to age well.",
-      "Commissions range from a single suite inside a private residence to full office, retail, and cultural fit-outs. We specify joinery, ironmongery, lighting, and finishes from a working relationship with trusted local makers.",
+      "Commissions range from a single suite inside a private residence to full office, retail, and corporate banking fit-outs. We specify joinery, ironmongery, lighting, and finishes from a working relationship with trusted local trades.",
     ],
     scope: [
       "Spatial re-planning and circulation studies",
@@ -102,7 +102,7 @@ export const services: Service[] = [
     ],
     whoItsFor: [
       "Families refurbishing a principal residence",
-      "Corporate clients fitting out a new headquarters",
+      "Corporate clients fitting out a new headquarters or branch network",
       "Cultural institutions staging galleries or public interiors",
       "Hospitality operators building a signature property",
     ],
@@ -118,15 +118,15 @@ export const services: Service[] = [
           "We curate and specify. On most projects we mix bespoke pieces drawn in-house with a short list of trade-only items, and we manage procurement through the client's preferred route. We do not mark up furniture sales.",
       },
     ],
-    relatedProjectSlugs: ["port-harcourt-interior-suite", "ikoyi-family-residence"],
+    relatedProjectSlugs: ["multi-site-corporate-facilities", "private-residence-maitama-abuja"],
   },
   {
     slug: "design-build",
     title: "Design-Build",
     hook: "One team, one contract, one accountable line from first sketch to handover.",
     summary: [
-      "Design-build folds design and construction into a single engagement. The client meets one team, signs one contract, and carries one line of accountability from brief to handover. It is the delivery model we use when speed, budget certainty, and single-point responsibility matter most.",
-      "We pair our in-house design team with a trusted network of contractors and site supervisors. Every trade is pre-qualified, every cost is tracked to the drawing set, and the same studio seniors who drew the building are on site while it is being built.",
+      "Design-build folds design and construction into a single engagement through Ganttworks Limited, the practice's construction arm. The client meets one team, signs one contract, and carries one line of accountability from brief to handover.",
+      "We pair our in-house design team with experienced site supervisors and pre-qualified trades. Every cost is tracked to the drawing set, and the same architects who drew the building are on site while it is being built.",
     ],
     scope: [
       "Integrated design and construction planning",
@@ -163,7 +163,7 @@ export const services: Service[] = [
           "Yes, once the design is developed enough to be costed reliably. We will not fix a sum against a sketch — it does neither party any favours. The fixed construction sum is agreed at the end of the development stage.",
       },
     ],
-    relatedProjectSlugs: ["lagos-corporate-headquarters", "abuja-diplomatic-residence"],
+    relatedProjectSlugs: ["rainoil-service-stations", "feese-international-primary-school"],
   },
   {
     slug: "cultural-institutional",
@@ -204,10 +204,10 @@ export const services: Service[] = [
       {
         question: "Do you take on projects that will be phased over many years?",
         answer:
-          "We do. New Culture Studios has been under continuous development since 1967. We draw master plans that can be built in honest, financially realistic phases without compromising the end state.",
+          "We do. We draw master plans that can be built in honest, financially realistic phases without compromising the end state.",
       },
     ],
-    relatedProjectSlugs: ["oba-akenzua-cultural-centre", "new-culture-studios-ibadan"],
+    relatedProjectSlugs: ["oba-akenzua-cultural-centre", "idumuje-ugboko-royal-palace"],
   },
   {
     slug: "facilities-management",
@@ -250,7 +250,7 @@ export const services: Service[] = [
           "A single studio number reaches a duty manager at all hours, with a pre-agreed list of trusted trades for rapid dispatch. Response times are specified in the contract and reported monthly.",
       },
     ],
-    relatedProjectSlugs: ["lagos-corporate-headquarters", "abuja-diplomatic-residence"],
+    relatedProjectSlugs: ["multi-site-corporate-facilities", "rainoil-service-stations"],
   },
   {
     slug: "property-development",
@@ -293,7 +293,7 @@ export const services: Service[] = [
           "From single plots of around half an acre to multi-phase schemes of several hectares. Larger sites are taken in phases rather than in a single push.",
       },
     ],
-    relatedProjectSlugs: ["ibadan-artists-retreat", "lagos-corporate-headquarters"],
+    relatedProjectSlugs: ["abuja-affordable-housing-scheme", "new-culture-apartments-ibadan"],
   },
 ];
 
