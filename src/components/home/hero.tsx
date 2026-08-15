@@ -35,8 +35,8 @@ export function HomeHero() {
           className="absolute inset-0"
         >
           <Image
-            src="/images/projects/oba-akenzua-cultural-centre/hero.jpg"
-            alt="Oba Akenzua Cultural Centre, Benin City — civic plaza and monumental elevation."
+            src="/images/projects/lady-pierce-chapel-issele-uku/hero.jpg"
+            alt="Lady Pierce Chapel, Issele-Uku — monumental elevation with Demas Nwoko in foreground."
             fill
             priority
             sizes="(min-width: 1024px) 52vw, (min-width: 768px) 58vw, 100vw"
