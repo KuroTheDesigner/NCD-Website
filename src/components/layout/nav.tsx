@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -106,10 +107,19 @@ export function Nav() {
         <Link
           href="/"
           className={cn(
-            "group inline-flex items-baseline gap-2",
+            "group inline-flex items-center gap-2.5 sm:gap-3",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
           )}
         >
+          <Image
+            src="/images/logo/ncd-logo.png"
+            alt="New Culture Designs logo"
+            width={36}
+            height={36}
+            style={{ width: "auto" }}
+            className="h-7 w-auto md:h-8 object-contain shrink-0 transition-transform duration-[240ms] group-hover:scale-105"
+            priority
+          />
           <span
             className={cn(
               "font-[var(--font-display)] italic",

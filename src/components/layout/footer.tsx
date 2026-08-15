@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   InstagramLogo,
@@ -118,19 +119,29 @@ export function Footer() {
         <Container>
           {/* Large wordmark */}
           <div className="flex flex-col gap-10 pb-14 md:flex-row md:items-end md:justify-between">
-            <h2
-              className={cn(
-                "font-[var(--font-display)] italic",
-                "text-[3rem] md:text-[5rem] lg:text-[6.5rem]",
-                "leading-[0.95] tracking-[-0.03em]",
-                "text-[var(--color-bone)]",
-                "max-w-[12ch]",
-              )}
-            >
-              New Culture
-              <br />
-              Designs.
-            </h2>
+            <div className="flex items-center gap-5 sm:gap-7 md:gap-9 lg:gap-10">
+              <Image
+                src="/images/logo/ncd-logo.png"
+                alt="New Culture Designs Logo"
+                width={200}
+                height={200}
+                style={{ width: "auto" }}
+                className="h-[5.5rem] w-auto sm:h-[6.5rem] md:h-[9.5rem] lg:h-[12.5rem] object-contain shrink-0"
+              />
+              <h2
+                className={cn(
+                  "font-[var(--font-display)] italic",
+                  "text-[3rem] md:text-[5rem] lg:text-[6.5rem]",
+                  "leading-[0.95] tracking-[-0.03em]",
+                  "text-[var(--color-bone)]",
+                  "max-w-[12ch]",
+                )}
+              >
+                New Culture
+                <br />
+                Designs.
+              </h2>
+            </div>
 
             <p
               className={cn(
