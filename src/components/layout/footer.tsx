@@ -78,41 +78,43 @@ export function Footer() {
       <div
         aria-hidden="true"
         className={cn(
-          "marquee border-y border-[color:color-mix(in_srgb,var(--color-ink)_12%,transparent)]",
-          "bg-[var(--color-ash-100)]",
-          "py-6",
+          "border-y border-[color:color-mix(in_srgb,var(--color-bone)_12%,transparent)]",
+          "bg-[var(--color-ink-950)]",
+          "py-6 overflow-hidden",
         )}
       >
-        <div className="marquee-track">
-          {marqueeItems.map((project, idx) => (
-            <span
-              key={`${project.slug}-${idx}`}
-              className={cn(
-                "inline-flex items-center gap-6",
-                "font-[var(--font-display)] italic",
-                "text-[1.75rem] md:text-[2.25rem]",
-                "leading-none tracking-[-0.02em]",
-                "text-[var(--color-ink-700)]",
-              )}
-            >
-              {project.title}
+        <div className="marquee-mask">
+          <div className="marquee-track">
+            {marqueeItems.map((project, idx) => (
               <span
-                className="font-[var(--font-mono)] not-italic text-[0.6875rem] uppercase tracking-[0.16em] text-[var(--color-stone-500)]"
+                key={`${project.slug}-${idx}`}
+                className={cn(
+                  "inline-flex items-center gap-6",
+                  "font-[var(--font-display)] italic",
+                  "text-[1.75rem] md:text-[2.25rem]",
+                  "leading-none tracking-[-0.02em]",
+                  "text-[var(--color-bone-100)]",
+                )}
               >
-                {project.yearStart}
-                {project.yearEnd ? `–${project.yearEnd}` : ""}
+                {project.title}
+                <span
+                  className="font-[var(--font-mono)] not-italic text-[0.6875rem] uppercase tracking-[0.16em] text-[var(--color-stone-400)]"
+                >
+                  {project.yearStart}
+                  {project.yearEnd ? `–${project.yearEnd}` : ""}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-[1.5px] w-10 bg-[var(--color-laterite)]/70"
+                />
               </span>
-              <span
-                aria-hidden="true"
-                className="h-[1.5px] w-10 bg-[var(--color-laterite)]/70"
-              />
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Footer body */}
-      <div className="bg-[var(--color-bone)] pb-10 pt-16 md:pb-14 md:pt-24">
+      <div className="bg-[var(--color-ink)] pb-10 pt-16 text-[var(--color-bone)] md:pb-14 md:pt-24">
         <Container>
           {/* Large wordmark */}
           <div className="flex flex-col gap-10 pb-14 md:flex-row md:items-end md:justify-between">
@@ -121,7 +123,7 @@ export function Footer() {
                 "font-[var(--font-display)] italic",
                 "text-[3rem] md:text-[5rem] lg:text-[6.5rem]",
                 "leading-[0.95] tracking-[-0.03em]",
-                "text-[var(--color-ink)]",
+                "text-[var(--color-bone)]",
                 "max-w-[12ch]",
               )}
             >
@@ -133,7 +135,7 @@ export function Footer() {
             <p
               className={cn(
                 "max-w-[34ch] font-[var(--font-body)] text-[0.95rem]",
-                "text-[var(--color-ink-500)]",
+                "text-[var(--color-ash-300)]",
               )}
             >
               An indigenous architectural practice working across Nigeria and
@@ -143,14 +145,14 @@ export function Footer() {
           </div>
 
           {/* Columns */}
-          <div className="grid grid-cols-1 gap-10 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-12 md:grid-cols-[1.2fr_1fr_1fr_1fr] md:gap-12">
+          <div className="grid grid-cols-1 gap-10 border-t border-[color:color-mix(in_srgb,var(--color-bone)_12%,transparent)] pt-12 md:grid-cols-[1.2fr_1fr_1fr_1fr] md:gap-12">
             {/* Columns */}
             {COLUMNS.map((column) => (
               <div key={column.heading} className="flex flex-col gap-4">
                 <h3
                   className={cn(
                     "font-[var(--font-mono)] text-[0.6875rem] uppercase",
-                    "tracking-[0.16em] text-[var(--color-stone-600)]",
+                    "tracking-[0.16em] text-[var(--color-stone-400)]",
                     // Column headers aren't display serif — override the global h3.
                     "![font-family:var(--font-mono)] !leading-none",
                   )}
@@ -160,7 +162,7 @@ export function Footer() {
                 <ul className="flex flex-col gap-3 text-[0.95rem]">
                   {column.links.map((link) => (
                     <li key={`${column.heading}-${link.label}`}>
-                      <TextLink href={link.href}>{link.label}</TextLink>
+                      <TextLink href={link.href} inverted>{link.label}</TextLink>
                     </li>
                   ))}
                 </ul>
@@ -172,7 +174,7 @@ export function Footer() {
               <h3
                 className={cn(
                   "font-[var(--font-mono)] text-[0.6875rem] uppercase",
-                  "tracking-[0.16em] text-[var(--color-stone-600)]",
+                  "tracking-[0.16em] text-[var(--color-stone-400)]",
                   "![font-family:var(--font-mono)] !leading-none",
                 )}
               >
@@ -189,11 +191,11 @@ export function Footer() {
                       className={cn(
                         "inline-flex h-10 w-10 items-center justify-center",
                         "rounded-[var(--radius-sm)]",
-                        "border border-[color:color-mix(in_srgb,var(--color-ink)_18%,transparent)]",
-                        "text-[var(--color-ink-700)]",
+                        "border border-[color:color-mix(in_srgb,var(--color-bone)_20%,transparent)]",
+                        "text-[var(--color-bone)]",
                         "transition-[color,background-color,transform] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-                        "hover:bg-[var(--color-ink)] hover:text-[var(--color-bone)]",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
+                        "hover:bg-[var(--color-bone)] hover:text-[var(--color-ink)]",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink)]",
                         "active:translate-y-[1px]",
                       )}
                     >
@@ -208,9 +210,9 @@ export function Footer() {
           {/* Copyright */}
           <div
             className={cn(
-              "mt-16 flex flex-col gap-3 border-t border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)] pt-6",
+              "mt-16 flex flex-col gap-3 border-t border-[color:color-mix(in_srgb,var(--color-bone)_12%,transparent)] pt-6",
               "md:flex-row md:items-center md:justify-between",
-              "font-[var(--font-mono)] text-[0.6875rem] uppercase tracking-[0.16em] text-[var(--color-stone-600)]",
+              "font-[var(--font-mono)] text-[0.6875rem] uppercase tracking-[0.16em] text-[var(--color-stone-400)]",
             )}
           >
             <span>© {year} New Culture Designs & Development Centre</span>

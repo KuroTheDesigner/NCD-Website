@@ -199,6 +199,11 @@
 .marquee {
   overflow: hidden;
   white-space: nowrap;
+}
+
+.marquee-mask {
+  overflow: hidden;
+  white-space: nowrap;
   mask-image: linear-gradient(
     to right,
     transparent 0,

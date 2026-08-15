@@ -6,6 +6,8 @@ type TextLinkProps = ComponentProps<typeof Link> & {
   children: ReactNode;
   /** When true, suppress the underline-from-left effect (inline body links). */
   plain?: boolean;
+  /** When true, styled for dark / inverted surfaces. */
+  inverted?: boolean;
 };
 
 /**
@@ -16,15 +18,18 @@ export function TextLink({
   children,
   className,
   plain,
+  inverted,
   ...props
 }: TextLinkProps) {
   return (
     <Link
       className={cn(
         "group relative inline-block",
-        "text-[var(--color-ink)] hover:text-[var(--color-laterite)]",
+        inverted
+          ? "text-[var(--color-bone)] hover:text-[var(--color-laterite-300)] focus-visible:ring-offset-[var(--color-ink)]"
+          : "text-[var(--color-ink)] hover:text-[var(--color-laterite)] focus-visible:ring-offset-[var(--color-bone)]",
         "transition-colors duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2",
         className,
       )}
       {...props}
@@ -36,7 +41,10 @@ export function TextLink({
             aria-hidden="true"
             className={cn(
               "pointer-events-none absolute left-0 right-0 -bottom-[3px] h-[1.5px]",
-              "origin-left scale-x-0 bg-[var(--color-laterite)]",
+              "origin-left scale-x-0",
+              inverted
+                ? "bg-[var(--color-laterite-300)]"
+                : "bg-[var(--color-laterite)]",
               "transition-transform duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
               "group-hover:scale-x-100 group-focus-visible:scale-x-100",
             )}
