@@ -250,3 +250,29 @@
     animation: none !important;
   }
 }
+
+/* ----------------------------------------------------------------------
+   Core Services — Inverted row background with right edge fade
+   ---------------------------------------------------------------------- */
+.service-inverted-bg {
+  background: var(--color-ink);
+}
+
+@media (min-width: 768px) {
+  .service-inverted-bg {
+    background: linear-gradient(
+      to right in srgb,
+      transparent 0%,
+      transparent calc(20% - 1.5rem),
+      var(--color-ink) calc(20% - 1.5rem),
+      var(--color-ink) var(--fade-start, 65%),
+      color-mix(in srgb, var(--color-ink) 90%, transparent) calc(var(--fade-start, 65%) + 3%),
+      color-mix(in srgb, var(--color-ink) 72%, transparent) calc(var(--fade-start, 65%) + 7%),
+      color-mix(in srgb, var(--color-ink) 50%, transparent) calc(var(--fade-start, 65%) + 12%),
+      color-mix(in srgb, var(--color-ink) 30%, transparent) calc(var(--fade-start, 65%) + 18%),
+      color-mix(in srgb, var(--color-ink) 14%, transparent) calc(var(--fade-start, 65%) + 24%),
+      color-mix(in srgb, var(--color-ink) 4%, transparent) calc(var(--fade-start, 65%) + 29%),
+      transparent 100%
+    );
+  }
+}
