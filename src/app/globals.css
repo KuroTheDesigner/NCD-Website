@@ -252,6 +252,40 @@
 }
 
 /* ----------------------------------------------------------------------
+   CTA strip — laterite wall texture, right side, fading into Ink
+   ---------------------------------------------------------------------- */
+.cta-texture-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.06) 26%,
+    rgba(0, 0, 0, 0.24) 48%,
+    rgba(0, 0, 0, 0.52) 70%,
+    rgba(0, 0, 0, 0.8) 88%,
+    #000 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.06) 26%,
+    rgba(0, 0, 0, 0.24) 48%,
+    rgba(0, 0, 0, 0.52) 70%,
+    rgba(0, 0, 0, 0.8) 88%,
+    #000 100%
+  );
+}
+
+.cta-texture-wash {
+  background: linear-gradient(
+    to right in srgb,
+    color-mix(in srgb, var(--color-ink) 52%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 44%, transparent) 45%,
+    color-mix(in srgb, var(--color-ink) 26%, transparent) 78%,
+    color-mix(in srgb, var(--color-ink) 10%, transparent) 100%
+  );
+}
+
+/* ----------------------------------------------------------------------
    Core Services — Inverted row background with right edge fade
    ---------------------------------------------------------------------- */
 .service-inverted-bg {

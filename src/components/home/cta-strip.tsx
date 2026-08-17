@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { MetadataLine } from "@/components/ui/metadata-line";
 import { LinkButton } from "@/components/home/link-button";
@@ -8,9 +9,29 @@ export function CtaStrip() {
   return (
     <section
       aria-labelledby="cta-heading"
-      className="bg-[var(--color-ink)] text-[var(--color-bone)]"
+      className="relative isolate overflow-hidden bg-[var(--color-ink)] text-[var(--color-bone)]"
     >
-      <Container className="py-28 md:py-40">
+      {/* Laterite wall texture — anchored right, dissolving into Ink */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-y-0 right-0 z-0",
+          "w-[78%] md:w-[58%] lg:w-[52%]",
+          "cta-texture-mask",
+        )}
+      >
+        <Image
+          src="/images/motif/cta-laterite-wall.jpg"
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 52vw, (min-width: 768px) 58vw, 78vw"
+          className="object-cover opacity-55 md:opacity-70"
+        />
+        {/* Ink wash — heaviest where the type sits, lifting toward the right edge */}
+        <div className="cta-texture-wash absolute inset-0" />
+      </div>
+
+      <Container className="relative z-10 py-28 md:py-40">
         <div className="grid grid-cols-12 gap-8">
           <FadeUp className="col-span-12 flex flex-col gap-10 md:col-span-9 lg:col-span-8">
             <MetadataLine className="!text-[var(--color-stone-400)]">
