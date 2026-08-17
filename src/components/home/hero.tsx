@@ -62,10 +62,19 @@ export function HomeHero() {
         </motion.div>
       </div>
 
+      {/* Mobile: coordinates sit directly beneath the image, no rule */}
+      <Container className="relative z-10 pt-5 md:hidden">
+        <MetadataLine>
+          <span>7.3775° N</span>
+          <span>3.9470° E</span>
+          <span>Ibadan, Oyo State</span>
+        </MetadataLine>
+      </Container>
+
       <div
         className={cn(
-          "relative z-10 flex min-h-[100dvh] flex-col justify-between",
-          "pt-28 pb-10 md:pt-32 md:pb-12",
+          "relative z-10 flex flex-col justify-between md:min-h-[100dvh]",
+          "pt-10 pb-14 md:pt-32 md:pb-12",
         )}
       >
         <Container className="flex-1">
@@ -114,24 +123,22 @@ export function HomeHero() {
           </div>
         </Container>
 
-        {/* Footer-of-hero strip: location coordinates left, scroll cue right */}
-        <Container>
-          <div
-            className={cn(
-              "mt-14 flex flex-col gap-4 border-t border-[color:color-mix(in_srgb,var(--color-ink)_12%,transparent)] pt-6",
-              "md:flex-row md:items-center md:justify-between",
-            )}
-          >
-            <MetadataLine>
-              <span>7.3775° N</span>
-              <span>3.9470° E</span>
-              <span>Ibadan, Oyo State</span>
-            </MetadataLine>
-            <MetadataLine className="md:self-end">
-              <span>Scroll</span>
-              <span aria-hidden="true">—</span>
-              <span>Selected works below</span>
-            </MetadataLine>
+        {/* Footer-of-hero strip — desktop only. The rule is held to the left
+            column so it never crosses the signature image. */}
+        <Container className="hidden md:block">
+          <div className="grid grid-cols-12 gap-6">
+            <div
+              className={cn(
+                "mt-14 border-t border-[color:color-mix(in_srgb,var(--color-ink)_12%,transparent)] pt-6",
+                "col-span-4 lg:col-span-5",
+              )}
+            >
+              <MetadataLine>
+                <span>7.3775° N</span>
+                <span>3.9470° E</span>
+                <span>Ibadan, Oyo State</span>
+              </MetadataLine>
+            </div>
           </div>
         </Container>
       </div>
