@@ -95,8 +95,8 @@ export function Nav() {
       <header
       className={cn(
         "sticky top-0 z-30 w-full",
-        "bg-[var(--color-bone)]/85 backdrop-blur-md",
-        "border-b border-[color:color-mix(in_srgb,var(--color-ink)_10%,transparent)]",
+        "bg-[var(--color-ink)]/92 backdrop-blur-md",
+        "border-b border-[color:color-mix(in_srgb,var(--color-bone)_14%,transparent)]",
       )}
     >
       <nav
@@ -108,7 +108,9 @@ export function Nav() {
           href="/"
           className={cn(
             "group inline-flex items-center gap-2.5 sm:gap-3",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
+            // Aligned with the home hero stack, which hangs out past the gutter.
+            "translate-x-[var(--edge-pull)]",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite-300)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink)]",
           )}
         >
           <Image
@@ -125,9 +127,9 @@ export function Nav() {
               "font-[var(--font-display)] italic",
               "text-[1.1rem] md:text-[1.25rem]",
               "tracking-[-0.02em] leading-none",
-              "text-[var(--color-ink)]",
+              "text-[var(--color-bone)]",
               "transition-colors duration-[240ms]",
-              "group-hover:text-[var(--color-laterite)]",
+              "group-hover:text-[var(--color-laterite-300)]",
             )}
           >
             New Culture Designs
@@ -147,8 +149,8 @@ export function Nav() {
                     "group relative inline-flex items-center gap-2 py-2",
                     "font-[var(--font-body)] text-[0.875rem]",
                     "transition-colors duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-                    "text-[var(--color-ink)] hover:text-[var(--color-laterite)]",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
+                    "text-[var(--color-bone-200)] hover:text-[var(--color-laterite-300)]",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite-300)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink)]",
                   )}
                 >
                   <span className="relative">
@@ -157,7 +159,7 @@ export function Nav() {
                       aria-hidden="true"
                       className={cn(
                         "pointer-events-none absolute left-0 right-0 -bottom-[4px] h-[1.5px]",
-                        "origin-left bg-[var(--color-laterite)]",
+                        "origin-left bg-[var(--color-laterite-300)]",
                         "transition-transform duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
                         active
                           ? "scale-x-100"
@@ -181,10 +183,10 @@ export function Nav() {
           onClick={() => setOpen((v) => !v)}
           className={cn(
             "inline-flex h-10 w-10 items-center justify-center md:hidden",
-            "text-[var(--color-ink)]",
+            "text-[var(--color-bone)]",
             "transition-colors duration-[200ms]",
-            "hover:text-[var(--color-laterite)]",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bone)]",
+            "hover:text-[var(--color-laterite-300)]",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-laterite-300)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink)]",
             "rounded-[var(--radius-sm)]",
             "active:translate-y-[1px]",
           )}

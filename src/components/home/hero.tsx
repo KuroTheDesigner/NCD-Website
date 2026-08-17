@@ -10,22 +10,30 @@ import { cn } from "@/lib/cn";
 
 /**
  * Asymmetric editorial hero — static.
- * Display typography anchored left on a ~60% column. Signature image
- * anchored bottom-right, full-bleed to the right edge on desktop.
+ * Display typography anchored left on a ~60% column and pulled out past the
+ * container gutter by `--edge-pull` (shared with the nav wordmark, capped so
+ * it never runs off-screen). Signature image anchored right, full-bleed to
+ * the right edge on desktop.
  * Uses `min-h-[100dvh]` to prevent iOS Safari viewport jumping.
  */
 export function HomeHero() {
   return (
     <section
+      id="home-hero"
       aria-labelledby="home-hero-heading"
       className="relative min-h-[100dvh] w-full overflow-hidden"
     >
       {/* Signature image — absolute on desktop, inline on mobile */}
       <div
         className={cn(
-          "relative z-0 w-full md:absolute md:inset-y-0 md:right-0",
-          "md:w-[58%] lg:w-[52%]",
+          "relative z-0 w-full md:absolute md:right-0",
+          "md:w-[58%] lg:w-[50%]",
           "aspect-[4/5] md:aspect-auto",
+          // Top hangs 32px above the section; the bottom is pinned to the
+          // coordinate strip's rule so the image can never run past it. The
+          // rule sits lower at lg, where the strip stops wrapping to two
+          // lines. object-cover reframes the crop.
+          "md:top-[-32px] md:bottom-[101px] lg:bottom-[81px]",
         )}
       >
         <motion.div
@@ -39,7 +47,7 @@ export function HomeHero() {
             alt="Lady Pierce Chapel, Issele-Uku — monumental elevation with Demas Nwoko in foreground."
             fill
             priority
-            sizes="(min-width: 1024px) 52vw, (min-width: 768px) 58vw, 100vw"
+            sizes="(min-width: 1024px) 50vw, (min-width: 768px) 58vw, 100vw"
             className="object-cover"
           />
           {/* Warm fade into Bone — never pure black */}
@@ -77,41 +85,42 @@ export function HomeHero() {
           "pt-10 pb-14 md:pt-32 md:pb-12",
         )}
       >
-        <Container className="flex-1">
-          <div className="grid grid-cols-12 gap-6">
-            <FadeUp className="col-span-12 flex flex-col gap-8 md:col-span-8 lg:col-span-7">
-              <MetadataLine>
-                <span>Est. Ibadan</span>
-                <span>Design</span>
-                <span>Build</span>
-                <span>Facilities</span>
-              </MetadataLine>
-
+        <Container className="flex-1 md:flex md:items-center">
+          <div className="grid w-full grid-cols-12 gap-6">
+            <FadeUp className="col-span-12 flex flex-col md:col-span-8 lg:col-span-7">
               <h1
                 id="home-hero-heading"
                 className={cn(
-                  "font-[var(--font-display)] text-[var(--color-ink)]",
-                  "text-[clamp(2.75rem,8.4vw,6.75rem)]",
-                  "leading-[0.94] tracking-[-0.035em]",
+                  "font-[var(--font-display)] font-semibold text-[var(--color-ink)]",
+                  "text-[clamp(2.875rem,8.6vw,8.5rem)]",
+                  "leading-[0.84] tracking-[-0.04em]",
                   "[text-wrap:balance]",
+                  "translate-x-[var(--edge-pull)] md:-translate-y-[92px]",
                 )}
               >
                 An architecture
                 <br className="hidden sm:inline" />{" "}
-                <span className="italic font-light">built for this ground.</span>
+                <span className="italic font-normal">built for this ground.</span>
               </h1>
 
               <p
                 className={cn(
-                  "max-w-[46ch] text-[1.0625rem] md:text-[1.125rem]",
-                  "leading-[1.6] text-[var(--color-ink-500)]",
+                  "mt-6 max-w-[39ch] text-[clamp(1.0625rem,1.45vw,1.25rem)]",
+                  "leading-[1.55] text-[var(--color-ink-500)]",
+                  "translate-x-[var(--edge-pull)] md:-translate-y-[66px]",
                 )}
               >
                 An architecture practice rooted in Nigerian culture, building
                 spaces that carry their climate, their craft, and their story.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div
+                className={cn(
+                  "mt-10 flex flex-wrap items-center gap-4",
+                  "origin-left translate-x-[var(--edge-pull)]",
+                  "md:-translate-y-[40px] md:scale-[1.34]",
+                )}
+              >
                 <LinkButton href="/work" variant="primary" size="lg">
                   View selected works
                 </LinkButton>
@@ -131,6 +140,7 @@ export function HomeHero() {
               className={cn(
                 "mt-14 border-t border-[color:color-mix(in_srgb,var(--color-ink)_12%,transparent)] pt-6",
                 "col-span-4 lg:col-span-5",
+                "translate-x-[var(--edge-pull)] translate-y-[18px]",
               )}
             >
               <MetadataLine>

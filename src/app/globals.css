@@ -98,6 +98,29 @@
 }
 
 /* ----------------------------------------------------------------------
+   Edge pull — how far the home hero stack and the nav wordmark hang
+   outside the container gutter. Capped so the pull can never exceed the
+   space actually available to the left of the container: on viewports
+   narrower than 1440px + the pull it eases back to the gutter instead of
+   clipping. Zero below md, where there is no room to give.
+   ---------------------------------------------------------------------- */
+:root {
+  --edge-pull: 0px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --edge-pull: calc(-1 * min(123px, max((100vw - 1440px) / 2, 0px) + 2.5rem));
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --edge-pull: calc(-1 * min(123px, max((100vw - 1440px) / 2, 0px) + 3.5rem));
+  }
+}
+
+/* ----------------------------------------------------------------------
    Base — wrapped in @layer base so Tailwind utilities can override
    ---------------------------------------------------------------------- */
 @layer base {
